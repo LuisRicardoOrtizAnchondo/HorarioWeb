@@ -1,11 +1,13 @@
 extends layout
+include ./components/navbar
 include ./components/auth_form
 include ./components/sidebar
 
 block content
   if (!user)
-    div()
-      +sidebar()
+    +sidebar()
+    div(style="margin-left:200px;")
+      +navbar("nuria")
   else
     div()
       div(class="")
