@@ -7,7 +7,7 @@ function index(req, res, next){
 }
 
 function subscribe(req, res, next) {
-    Account.register(new Account({ username : req.body.username }), req.body.password, (err, account) => {
+    Account.register(new Account({ username : req.body.username, email: req.body.email }), req.body.password, (err, account) => {
         if (err) {
           return res.render('login/subscribe', { error : err.message });
         }
@@ -22,13 +22,30 @@ function subscribe(req, res, next) {
     });
 }
 
+function login(req, res, next){
+    res.render('login/login', { user : req.user });
+}
+
 function logout(req, res, next) {
     req.logout();
     res.redirect('/');
 }
-
+/*
+function uploadAvatar(req, res) {
+  db.collection.find({'imgId':req.params.id}, function(err,data) {
+      var base64Image = var img = new Buffer(data.imgDataField, 'base64');
+      res.writeHead(200, {
+        'Content-Type': 'image/jpeg',
+        'Content-Length': base64Image.buffer.length
+      });
+      res.end(base64Image.buffer);
+  }
+}
+*/
 module.exports ={
   index,
   subscribe,
-  logout
+  logout, 
+  login
+  //uploadAvatar
 };
