@@ -10,11 +10,11 @@ router.get('/', function(req, res, next){
 });
 
 router.get('/new', function(req, res, next){
-  res.send("new subject")
+  res.render('subjects/new_subject', {})
 });
 
 router.get('/modify', function(req, res, next){
-  res.send("modify subject")
+  res.render('subjects/new_subject', {})
 });
 
 module.exports = router;
