@@ -1,33 +1,38 @@
 extends layout
 include ./components/navbar
 include ./components/sidebar
-include ./login/subscribe_form
+include ./login/user_form
 include ./login/modal_login
 
 block content
-  if (!user)
+  if (user)
     +sidebar()
-    +navbar("nuria")
+    +navbar(user.username)
     div(class="content")
       h3 content
   else
-    div()
-      div(class="container col-md-offset-10")
-        h3
+    div(class="my_login")
+      div(class="col-md-offset-11")
+        br
+        h4
           a(href="#" data-toggle="modal" data-target="#login") Ingresar
-      +modal("login", "/login", "POST")
-      div(class="container col-md-offset-5")
+      +modal_login("login", "/login", "POST")
+      div(class="col-md-offset-5")
         br
         br 
-        h2 ShowTime!
+        h2(class="my_title") ShowTime!
         br
         br
-      div(class="container col-md-offset-2 col-md-4") 
-        h3 Todo en un solo lugar!
         br
-        img(src="images/all_in_one.png" height="200" width="300")
-      div(class="container col-md-4") 
-        br
-        +subscribe_form("/subscribe", "POST")
+      div(class="col-md-10 col-md-offset-1")
+        div(class="panel panel-default")
+          div(class="panel-body")
+            div(class="col-md-6") 
+              h3 Todo en un solo lugar!
+              br
+              img(src="images/all_in_one.png" height="200" width="300")
+            div(class="col-md-6") 
+              br
+              +user_form("/subscribe", "POST", "Empieza a usarlo hoy!", "btn btn-primary", "Registrarme", "new")
 
     

@@ -13,6 +13,14 @@ a {
   top: 80px;
 }
 
+.my_login {
+  background-color: #23282e;
+}
+
+.my_title {
+  color: #e1ffff;
+}
+
 .my-nav {
   background-color: #23282e;
   line-height: 50px;

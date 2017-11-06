@@ -1,0 +1,14 @@
+include ../components/inputForm
+include ../components/buttonForm
+
+mixin user_form(action, method, legend, btnClass, btnText, isNew)
+  form(class="form-horizontal", action=action, method=method)
+    fieldset
+      legend 
+        div(class="col-md-offset-3") #{legend}
+      +input('fa  fa-user fa-lg', "text", "Nombre de usuario", "username")
+      +input('fa  fa-envelope fa-lg', "email", "Email", "email")
+      +input('fa  fa-asterisk fa-lg', "password", "Contraseña", "password")
+      if (isNew)
+        +input('fa  fa-asterisk fa-lg', "password", "Confirme Contraseña", "check")
+      +button(btnClass, btnText)
