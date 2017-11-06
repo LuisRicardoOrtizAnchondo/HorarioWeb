@@ -4,10 +4,10 @@ include ./components/auth_form
 include ./components/sidebar
 
 block content
-  if (!user)
+  if (user)
     +sidebar()
+    +navbar("nuria")
     div(style="margin-left:200px;")
-      +navbar("nuria")
   else
     div()
       div(class="")

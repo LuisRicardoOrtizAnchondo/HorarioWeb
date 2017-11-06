@@ -6,3 +6,40 @@ body {
 a {
   color: #00B7FF;
 }
+
+.my-nav {
+  background-color: #23282e;
+  line-height: 50px;
+  display: block;
+  text-align: center;
+  font-size: 14px;
+  border-color: #23282e;
+  /*border-radius: 0;*/
+}
+
+.navbar-brand span {
+  color: #e1ffff;
+}
+
+.dropdown-menu {
+  background-color: #23282e;
+}
+
+.dropdown-menu li a {
+  color: #e1ffff;
+  text-align: center;
+}
+
+.dropdown-menu li a:hover {
+  color: #e1ffff;
+  text-decoration: underline;
+}
+
+.my-nav li a span:hover {
+  color: #e1ffff;
+  text-decoration: underline;
+}
+
+.my-nav li a span {
+  color: #e1ffff;
+}
