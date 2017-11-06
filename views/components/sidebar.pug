@@ -1,0 +1,53 @@
+mixin sidebar()
+  div(class="nav-side-menu")
+    div(class="brand") 
+      span(class='fa  fa-calendar fa-lg') &nbsp; ShowTime!
+    div(class="menu-list")
+      ul(id="menu-content" class="menu-content collapse out")
+        li(data-toggle="collapse" data-target="#subject" class="collapsed")
+          a(href="#") &nbsp;
+            span(class="fa fa-book fa-lg") &nbsp; Materias
+            span(class="arrow")
+        ul(class="sub-menu collapse" id="subject")
+          li Nueva materia
+          li Modificar materia
+          li Ver materias
+        
+        li(data-toggle="collapse" data-target="#homework" class="collapsed")
+          a(href="#") &nbsp;
+            span(class="fa fa-edit fa-lg") &nbsp; Tareas
+            span(class="arrow")
+        ul(class="sub-menu collapse" id="homework")
+          li Nueva tarea
+          li Modificar tarea
+          li Ver tarea
+        
+        li(data-toggle="collapse" data-target="#test" class="collapsed")
+          a(href="#") &nbsp;
+            span(class="fa fa-flag fa-lg") &nbsp; Exámenes
+            span(class="arrow")
+        ul(class="sub-menu collapse" id="test")
+          li Nuevo examen
+          li Modificar examen
+          li Ver examen
+          
+        li(data-toggle="collapse" data-target="#group" class="collapsed")
+          a(href="#") &nbsp;
+            span(class="fa fa-group fa-lg") &nbsp; Grupos
+            span(class="arrow")
+        ul(class="sub-menu collapse" id="group")
+          li Nuevo grupo
+          li Unirme a grupo
+          li Ver grupos
+        
+        li(data-toggle="collapse" data-target="#user" class="collapsed")
+          a(href="#") &nbsp;
+            span(class="fa fa-user fa-lg") &nbsp; Mi cuenta
+            span(class="arrow")
+        ul(class="sub-menu collapse" id="user")
+          li Modificar mis datos
+          li Cerrar sesión
+        
+        
+        
+        

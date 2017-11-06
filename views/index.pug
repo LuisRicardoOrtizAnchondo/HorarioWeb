@@ -1,10 +1,26 @@
 extends layout
+include ./components/auth_form
+include ./components/sidebar
 
 block content
   if (!user)
-    a(href="/login") Login
-    br
-    a(href="/register") Register
-  if (user)
-    p You are currently logged in as #{user.username}
-    a(href="/logout") Logout
+    div()
+      +sidebar()
+  else
+    div()
+      div(class="")
+      div(class="container col-md-offset-5")
+        br
+        br 
+        h2 ShowTime!
+        br
+        br
+      div(class="container col-md-offset-2 col-md-4") 
+        h3 Todo en un solo lugar!
+        br
+        img(src="images/all_in_one.png" height="200" width="300")
+      div(class="container col-md-4") 
+        br
+        +auth_form("/subscribe", "POST")
+
+    
