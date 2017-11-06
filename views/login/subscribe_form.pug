@@ -1,4 +1,4 @@
-mixin auth_form(action, method)
+mixin subscribe_form(action, method)
   form(class="form-horizontal", action=action, method=method)
     fieldset
       legend 
@@ -8,6 +8,11 @@ mixin auth_form(action, method)
           span(class='fa  fa-user fa-lg')
         div(class="col-md-10")
           input(type="text" class="form-control" placeholder="Nombre de usuario" name="username")
+      div(class="form-group")
+        label(class="col-md-2 control-label") 
+          span(class='fa  fa-envelope fa-lg')
+        div(class="col-md-10")
+          input(type="email" class="form-control" placeholder="Email" name="email")
       div(class="form-group")
         label(class="col-md-2 control-label") 
           span(class='fa  fa-asterisk fa-lg')

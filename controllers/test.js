@@ -1,5 +1,5 @@
 const express = require('express');
-const Test = require('../../models/test');
+const Test = require('../models/test');
 
 function show(req, res, next){
    Test.find({owner: req.user._id}).exec(function (err, test) {

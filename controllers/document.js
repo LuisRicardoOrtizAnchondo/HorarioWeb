@@ -1,5 +1,5 @@
 const express = require('express');
-const Document = require('../../models/document');
+const Document = require('../models/document');
 
 function show(req, res, next){
    Document.find({owner: req.user._id}).exec(function (err, document) {

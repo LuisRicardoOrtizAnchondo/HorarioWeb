@@ -1,5 +1,5 @@
 const express = require('express');
-const Group = require('../../models/group');
+const Group = require('../models/group');
 
 function show(req, res, next){
    Group.find({owner: req.user._id}).exec(function (err, groups) {
@@ -22,5 +22,5 @@ function newGroup(req, res, next) {
 
 module.exports ={
   show,
-  newSubject
+  newGroup
 };

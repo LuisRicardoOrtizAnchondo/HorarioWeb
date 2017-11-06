@@ -1,0 +1,9 @@
+extends ../layout
+include ../components/navbar
+include ../components/sidebar
+
+block content
+  +sidebar()
+  +navbar("nuria")
+  div(class="content")
+    h3 content

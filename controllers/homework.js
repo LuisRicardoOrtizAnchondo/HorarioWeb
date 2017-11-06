@@ -1,5 +1,5 @@
 const express = require('express');
-const Homework = require('../../models/homework');
+const Homework = require('../models/homework');
 
 function show(req, res, next){
    Homework.find({owner: req.user._id}).exec(function (err, homework) {
@@ -16,7 +16,7 @@ function newGroup(req, res, next) {
         if (err) {
           return res.render('homework/index', { error : err.message });
         }else{
-          return res.render('/', { homework }); 
+          return res.render('/', { homework });
         }
     });
 }

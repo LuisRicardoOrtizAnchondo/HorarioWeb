@@ -1,6 +1,6 @@
 const express = require('express');
 const passport = require('passport');
-const Account = require('../../models/account');
+const Account = require('../models/account');
 
 function index(req, res, next){
   res.render('index', { user : req.user });
@@ -9,7 +9,7 @@ function index(req, res, next){
 function subscribe(req, res, next) {
     Account.register(new Account({ username : req.body.username, email: req.body.email }), req.body.password, (err, account) => {
         if (err) {
-          return res.render('login/subscribe', { error : err.message });
+          return res.render('index', { error : err.message });
         }
         passport.authenticate('local')(req, res, () => {
             req.session.save(function (err) {
@@ -45,7 +45,7 @@ function uploadAvatar(req, res) {
 module.exports ={
   index,
   subscribe,
-  logout, 
+  logout,
   login
   //uploadAvatar
 };

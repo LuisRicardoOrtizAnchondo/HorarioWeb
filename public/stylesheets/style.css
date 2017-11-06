@@ -7,6 +7,12 @@ a {
   color: #00B7FF;
 }
 
+.content {
+  position: relative;
+  left: 230px;
+  top: 80px;
+}
+
 .my-nav {
   background-color: #23282e;
   line-height: 50px;

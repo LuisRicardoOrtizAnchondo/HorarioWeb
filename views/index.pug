@@ -1,16 +1,21 @@
 extends layout
 include ./components/navbar
-include ./components/auth_form
 include ./components/sidebar
+include ./login/subscribe_form
+include ./login/modal_login
 
 block content
-  if (user)
+  if (!user)
     +sidebar()
     +navbar("nuria")
-    div(style="margin-left:200px;")
+    div(class="content")
+      h3 content
   else
     div()
-      div(class="")
+      div(class="container col-md-offset-10")
+        h3
+          a(href="#" data-toggle="modal" data-target="#login") Ingresar
+      +modal("login", "/login", "POST")
       div(class="container col-md-offset-5")
         br
         br 
@@ -23,6 +28,6 @@ block content
         img(src="images/all_in_one.png" height="200" width="300")
       div(class="container col-md-4") 
         br
-        +auth_form("/subscribe", "POST")
+        +subscribe_form("/subscribe", "POST")
 
     

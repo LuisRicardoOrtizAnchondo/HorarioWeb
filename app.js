@@ -7,8 +7,13 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
+
 var login = require('./routes/login');
 var users = require('./routes/users');
+var group = require('./routes/group');
+var homework = require('./routes/homework');
+var subject = require('./routes/subject');
+var test = require('./routes/test');
 
 var app = express();
 var server = require('http').createServer(app);
@@ -34,6 +39,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 app.use('/', login);
+app.use('/group', group);
+app.use('/homework', homework);
+app.use('/subject', subject);
+app.use('/test', test);
+app.use('/users', users);
 
 // passport config
 var Account = require('./models/account');
@@ -72,14 +82,14 @@ app.use(function(err, req, res, next) {
     });
 });
 
-io.on('connection', function(){ 
+io.on('connection', function(){
     socket.on('something', function(data, callback) {
 
     });
     socket.on('disconnect', function(data) {
 
     });
-    
+
     function aFunction() {
         io.sockets.emit('usernames', variable);
 }
@@ -87,4 +97,3 @@ io.on('connection', function(){
 
 
 module.exports = app;
-

@@ -9,44 +9,58 @@ mixin sidebar()
             span(class="fa fa-book fa-lg") &nbsp; Materias
             span(class="arrow")
         ul(class="sub-menu collapse" id="subject")
-          li Nueva materia
-          li Modificar materia
-          li Ver materias
+          li 
+            a(href="/subject/new") Nueva materia
+          li  
+            a(href="/subject/modify") Modificar materia
+          li  
+            a(href="/subject") Ver materias
         
         li(data-toggle="collapse" data-target="#homework" class="collapsed")
           a(href="#") &nbsp;
             span(class="fa fa-edit fa-lg") &nbsp; Tareas
             span(class="arrow")
         ul(class="sub-menu collapse" id="homework")
-          li Nueva tarea
-          li Modificar tarea
-          li Ver tarea
+          li  
+            a(href="/homework/new") Nueva tarea
+          li  
+            a(href="/homework/modify") Modificar tarea
+          li  
+            a(href="/homework") Ver tareas
         
         li(data-toggle="collapse" data-target="#test" class="collapsed")
           a(href="#") &nbsp;
             span(class="fa fa-flag fa-lg") &nbsp; Exámenes
             span(class="arrow")
         ul(class="sub-menu collapse" id="test")
-          li Nuevo examen
-          li Modificar examen
-          li Ver examen
+          li  
+            a(href="/test/new") Nuevo examen
+          li  
+            a(href="/test/modify") Modificar examen
+          li  
+            a(href="/test") Ver exámenes
           
         li(data-toggle="collapse" data-target="#group" class="collapsed")
           a(href="#") &nbsp;
             span(class="fa fa-group fa-lg") &nbsp; Grupos
             span(class="arrow")
         ul(class="sub-menu collapse" id="group")
-          li Nuevo grupo
-          li Unirme a grupo
-          li Ver grupos
+          li  
+            a(href="/group/new") Nuevo grupo
+          li  
+            a(href="/group/unite") Unirme a grupo
+          li  
+            a(href="/group") Ver grupos
         
         li(data-toggle="collapse" data-target="#user" class="collapsed")
           a(href="#") &nbsp;
             span(class="fa fa-user fa-lg") &nbsp; Mi cuenta
             span(class="arrow")
         ul(class="sub-menu collapse" id="user")
-          li Modificar mis datos
-          li Cerrar sesión
+          li  
+            a(href="#") Modificar mis datos
+          li  
+            a(href="/logout") Cerrar sesión
         
         
         
