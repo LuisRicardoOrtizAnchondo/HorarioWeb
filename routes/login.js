@@ -5,21 +5,22 @@ const router = express.Router();
 
 router.get('/', loginController.index);
 
-/*
-router.get('/register', function(req, res) {
-    res.render('register', { });
-});
-*/
+router.get('/subscribe', loginController.subscribe);
+
 router.post('/subscribe', loginController.subscribe);
 
-router.get('/login', function(req, res) {
-    res.render('login/login', { user : req.user });
-});
+router.get('/login', loginController.login);
 
 router.post('/login', passport.authenticate('local'), function(req, res) {
     res.redirect('/');
 });
 
+//router.post('/uploadAvatar', loginController.uploadAvatar);
+
 router.get('/logout', loginController.logout);
+
+router.get('/chat', function(req, res){
+	res.render('login/chat');
+});
 
 module.exports = router;

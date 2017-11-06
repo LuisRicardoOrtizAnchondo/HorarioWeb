@@ -7,12 +7,12 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
-
 var login = require('./routes/login');
 var users = require('./routes/users');
 
 var app = express();
-
+var server = require('http').createServer(app);
+var io = require('socket.io')(server);
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
@@ -72,5 +72,19 @@ app.use(function(err, req, res, next) {
     });
 });
 
+io.on('connection', function(){ 
+    socket.on('something', function(data, callback) {
+
+    });
+    socket.on('disconnect', function(data) {
+
+    });
+    
+    function aFunction() {
+        io.sockets.emit('usernames', variable);
+}
+});
+
 
 module.exports = app;
+
