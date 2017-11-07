@@ -14,6 +14,7 @@ var group = require('./routes/group');
 var homework = require('./routes/homework');
 var subject = require('./routes/subject');
 var test = require('./routes/test');
+var document = require('./routes/document');
 
 var app = express();
 var server = require('http').createServer(app);
@@ -44,7 +45,7 @@ app.use('/homework', homework);
 app.use('/subject', subject);
 app.use('/test', test);
 app.use('/users', users);
-
+app.use('/document', document);
 // passport config
 var Account = require('./models/account');
 passport.use(new LocalStrategy(Account.authenticate()));

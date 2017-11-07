@@ -12,7 +12,7 @@ function show(req, res, next){
 }
 
 function newDocument(req, res, next) {
-    Document.register(new Document({ name : req.body.name }), (err, document) => {
+    Document.register(new Document({ title: req.body.title, content: req.body.content, user: req.user.id, date: new Date() , category: req.body.category }), (err, document) => {
         if (err) {
           return res.render('/', { error : err.message });
         } else {
@@ -23,5 +23,5 @@ function newDocument(req, res, next) {
 
 module.exports = {
   show,
-  newSubject
+  newDocument
 };

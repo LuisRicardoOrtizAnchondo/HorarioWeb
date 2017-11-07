@@ -1,0 +1,20 @@
+
+block content
+form(action='/document/newDocument', method='post')
+  .form-group
+    label(for='exampleInputTitle') Titulo
+    input#exampleInputTitle.form-control(type='text', aria-describedby='emailHelp', placeholder='Titulo')
+  .form-group
+    label(for='exampleInputContent') Contenido
+    input#exampleInputContent.form-control(type='text-area', name='contenido', placeholder='Contenido')
+  .form-group
+    label#exampleInputCategory(for='exampleInputCategory') Category
+    select(name='category')
+      option(value='tarea') Tarea
+      option(value='examen') Examen
+      option(value='independiente') Independiente
+      option(value='plantilla') plantilla
+    .form-group
+      label(for='exampleFormControlDocx') .Docx
+      input#exampleFormControlDocx.form-control-file(type='file')
+  button.btn.btn-primary(type='submit') Submit

@@ -1,6 +1,6 @@
 const express = require('express');
 const Homework = require('../models/homework');
-
+const passport = require('passport');
 function show(req, res, next){
    Homework.find({owner: req.user._id}).exec(function (err, homework) {
       if (err) {
@@ -11,7 +11,7 @@ function show(req, res, next){
 })
 }
 
-function newGroup(req, res, next) {
+function newHomework(req, res, next) {
     Homework.register(new Group({ name : req.body.name }), (err, homework) => {
         if (err) {
           return res.render('homework/index', { error : err.message });
@@ -23,5 +23,5 @@ function newGroup(req, res, next) {
 
 module.exports ={
   show,
-  newGroup
+  newHomework
 };
