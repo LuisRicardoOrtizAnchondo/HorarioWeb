@@ -7,7 +7,7 @@ var Homework = new Schema({
     description: String,
     isDone: Boolean,
     due: Boolean,
-    //isPublic: Boolean, //Tal vez con que tenga grupo ya automaticamente sea true, o mas bien sin isPublic
+    isPublic: Boolean, 
     subject: {type: ObjectId, ref: 'subject'},
     group: {type: ObjectId, ref: 'group'}
 });

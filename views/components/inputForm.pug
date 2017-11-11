@@ -1,6 +1,6 @@
-mixin input(icon, type, placeholder, name)
+mixin input(icon, type, placeholder, name, value, id)
   div(class="form-group")
     label(class="col-md-2 control-label") 
       span(class=icon)
     div(class="col-md-10")
-      input(type=type class="form-control" placeholder=placeholder name=name)
+      input(type=type class="form-control" placeholder=placeholder name=name id=id value=value)

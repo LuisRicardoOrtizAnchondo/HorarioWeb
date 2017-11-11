@@ -1,0 +1,8 @@
+extends ../layout_logged
+include ./subject-form
+
+block content
+  div(class="container col-md-6 col-md-offset-2")
+    div(class="panel panel-default")
+      div(class="panel-body")
+        +subject-form("#", "")

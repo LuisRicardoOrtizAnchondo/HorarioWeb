@@ -1,0 +1,8 @@
+mixin select(icon, name, options)
+  div(class="form-group")
+    label(class="col-md-2 control-label")
+      span(class=icon)
+    div(class="col-md-10")
+      select(class="form-control" name=name)
+        each option in options
+          option(value=option.name) #{option.name}

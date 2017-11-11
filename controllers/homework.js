@@ -1,14 +1,15 @@
 const express = require('express');
 const Homework = require('../models/homework');
 const passport = require('passport');
+
 function show(req, res, next){
-   Homework.find({owner: req.user._id}).exec(function (err, homework) {
+  Homework.find({owner: req.user._id}).exec(function (err, homework) {
       if (err) {
         res.render('homework/index', { error: 'Ocurrio un error inesperado' })
       } else {
-        res.render('homework/index', { homework })
+        res.render('homework/index', { homework });
       }
-})
+  });
 }
 
 function newHomework(req, res, next) {

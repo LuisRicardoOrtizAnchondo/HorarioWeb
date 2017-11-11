@@ -1,0 +1,11 @@
+extends ../layout_logged
+include ./homework-form
+
+block content
+  div(class="container col-md-6 col-md-offset-2")
+    div(class="panel panel-default")
+      div(class="panel-body")
+        if (!homework)
+          +homework-form("/new", "POST", "Nueva Tarea", "btn btn-primary", "Registrar", subjects)
+        else
+          +homework-form("/new", "POST", "Nueva Tarea", "btn btn-primary", "Registrar", subjects)

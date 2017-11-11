@@ -1,0 +1,19 @@
+{
+  "name": "HorarioWeb",
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "homepage": "https://github.com/LuisRicardoOrtizAnchondo/HorarioWeb",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "eonasdan-bootstrap-datetimepicker": "^4.17.47",
+    "bootstrap": "3.3.7"
+  }
+}

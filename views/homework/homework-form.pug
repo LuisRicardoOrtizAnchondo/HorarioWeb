@@ -1,0 +1,20 @@
+include ../components/inputForm
+include ../components/buttonForm
+include ../components/selectForm
+include ../components/textAreaForm
+
+mixin homework-form(action, method, legend, btnClass, btnText, subjects, homework)
+  form(class="form-horizontal", action=action, method=method)
+    fieldset
+      legend 
+        div(class="col-md-offset-3") #{legend}
+      if (homework)
+        +text-area('fa  fa-pencil fa-lg', "Descripción de la tarea", "description", homework.description)
+        +input('fa  fa-calendar-plus-o fa-lg', "text", "Selecciona fecha de entrega", "due", homework.due, "datetimepicker4")
+        +select('fa  fa-book fa-lg', "subject", subjects)
+        +button(btnClass, btnText)
+      else 
+        +text-area('fa  fa-pencil fa-lg', "Descripción de la tarea", "description")
+        +input('fa  fa-calendar-plus-o fa-lg', "text", "Selecciona fecha de entrega", "due", "", "datetimepicker4")
+        +select('fa  fa-book fa-lg', "subject", subjects)
+        +button(btnClass, btnText)

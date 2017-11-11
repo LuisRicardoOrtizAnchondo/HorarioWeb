@@ -10,12 +10,12 @@ router.get('/', function(req, res, next){
 });
 
 router.get('/new', function(req, res, next){
-  res.render('subjects/new_subject', {});
+  res.render('subjects/new', {});
   //se necesita agregar un post para registrar nuevas materias
 });
 
 router.get('/modify', function(req, res, next){
-  res.render('subjects/new_subject', {});
+  res.render('subjects/new', {});
   //se cambiará esta ruta a /modify/[:id] y se rellenarán los campos del
   //form de la materia
 });

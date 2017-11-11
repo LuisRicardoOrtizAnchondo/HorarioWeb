@@ -8,7 +8,11 @@ router.get('/', function(req, res, next){
 });
 
 router.get('/new', function(req, res, next){
-  res.render('layout_logged', {});
+  var subjects = [
+    {name: "Fisica"},
+    {name: "Quimica"}
+  ];
+  res.render('homework/new', {subjects: subjects});
 });
 
 router.get('/modify', function(req, res, next){
