@@ -6,3 +6,9 @@ $("#menu-toggle").click(function(e) {
 $(function () {
     $('#datetimepicker4').datetimepicker();
 });
+
+$(function () {
+    $('#datetimepicker3').datetimepicker({
+        format: 'LT'
+    });
+});

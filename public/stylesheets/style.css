@@ -57,3 +57,11 @@ a {
 .my-nav li a span {
   color: #e1ffff;
 }
+
+.bootstrap-datetimepicker-widget td, .bootstrap-datetimepicker-widget span {
+  color: #e1ffff;
+}
+
+.bootstrap-datetimepicker-widget td:hover, .bootstrap-datetimepicker-widget span:hover {
+  color: #23282e;
+}
