@@ -1,0 +1,19 @@
+mixin tab(subjects)
+  div
+    //- Nav tabs
+    - var first = "active"
+    ul(class="nav nav-tabs" role="tablist")
+      each subject in subjects
+        li(role="presentation" class=first)
+          a(href=`#${subject.name}` role="tab" data-toggle="tab") #{subject.name}
+          - first = ""
+    
+    //- Tab panes
+    - var content = "active" 
+    div(class="tab-content")
+      each subject in subjects
+        div(role="tabpanel" class="tab-pane " + content id=subject.name)
+          div(class="panel panel-default")
+            div(class="panel-body")
+              p= `hola, soy la materia ${subject.name}`
+              - content = ""

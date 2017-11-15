@@ -1,6 +1,9 @@
 extends ../layout_logged
-include ./show_all
+include ./subjects-tab
 
 block content
-  div(class="container col-md-8")
-      +tab()
+  if (subjects)
+    div(class="container col-md-8")
+        +tab(subjects)
+  
+  else
