@@ -7,6 +7,10 @@ a {
   color: #00B7FF;
 }
 
+.my-button:hover {
+  color: white;
+}
+
 .content {
   position: relative;
   left: 230px;

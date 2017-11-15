@@ -1,3 +1,5 @@
+include ../components/link
+
 mixin tab(subjects)
   div
     //- Nav tabs
@@ -15,5 +17,16 @@ mixin tab(subjects)
         div(role="tabpanel" class="tab-pane " + content id=subject.name)
           div(class="panel panel-default")
             div(class="panel-body")
-              p= `hola, soy la materia ${subject.name}`
               - content = ""
+              div(class="col-md-offset-11")
+                +link('#', 'btn btn-primary btn-xs', '', 'fa  fa-pencil-square-o fa-lg')
+              h2(class="col-md-offset-5") #{subject.name}
+              br
+              h4(class="col-md-offset-4")= `Impartida por: ${subject.teacher}`
+              h4(class="col-md-offset-4")= `Salón: ${subject.classroom}`
+              h4(class="col-md-offset-4")= `Horario: `
+              ul(class="col-md-offset-4")
+                each period in subject.schedule
+                  li=`${period.day} de ${period.start} a ${period.end}`
+              
+              

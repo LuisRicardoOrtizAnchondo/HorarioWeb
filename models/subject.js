@@ -6,7 +6,7 @@ const passportLocalMongoose = require('passport-local-mongoose');
 var Subject = new Schema({
     name: String,
     teacher: String,
-    horario: String,
+    schedule: [{day: String, start: String, end: String}],
     groups: [String],
     owner: {type: ObjectId, ref: 'account'},
     classroom: String

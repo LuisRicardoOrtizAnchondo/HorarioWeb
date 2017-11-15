@@ -1,0 +1,14 @@
+extends ../layout_logged
+include ./homework-panel
+
+block content
+  div(class="container col-md-8 col-md-offset-1")
+    div(class="panel panel-default")
+      div(class="panel-body")
+        h3(class="col-md-offset-4") Tareas Registradas
+        br
+        each homework in homeworks
+          - var title = `${homework.subject} - ${homework.due}`
+          div(class="col-md-6")
+            +panel(title, "panel panel-primary", homework)
+              

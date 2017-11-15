@@ -1,0 +1,6 @@
+mixin link(linkHref, linkClass, linkText, icon)
+  if (icon)
+    a(href=linkHref, class=linkClass)
+      span(class=icon) #{linkText}
+  else
+    a(href=linkHref, class=linkClass) #{linkText}

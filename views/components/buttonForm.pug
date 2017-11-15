@@ -1,4 +1,8 @@
-mixin button(btnClass, btnText)
+mixin button(btnClass, btnText, icon)
   div(class="form-group")
     div(class="col-md-10 col-md-offset-5")
-      button(type="submit", class=btnClass) #{btnText}
+      if (icon)
+        button(type="submit", class=btnClass)
+          span(class=icon) #{btnText}
+      else
+        button(type="submit", class=btnClass) #{btnText}

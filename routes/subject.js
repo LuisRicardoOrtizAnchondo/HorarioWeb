@@ -8,9 +8,9 @@ router.get('/', function(req, res, next){
   //si no se tienen materias renderizar vista que invita a crear una materia
   // la siguiente variable ejemplifica como son los objetos de cada materia
   // (falta owner id y grupos, si hay)
-  var subjects = [
-    {name: "Fisica", teacher: "Javier Mendoza", horario:{mon: "10 am - 11 am", wed: "10 am - 11 am"}, classroom: "E-23"},
-    {name: "Quimica", teacher: "Martha Arreola", horario:{tue: "10 am - 11 am", thu: "10 am - 11 am"}, classroom: "F-15"}
+  let subjects = [
+    {name: "Fisica", teacher: "Javier Mendoza", schedule:[{day:"Lunes", start:"10am", end:"11am"}, {day:"Miércoles", start:"10am", end:"12pm"}], classroom: "E-23"},
+    {name: "Quimica", teacher: "Martha Arreola", schedule:[{day:"Martes", start:"9am", end:"11am"}, {day:"Jueves", start:"8am", end:"10am"}], classroom: "F-15"}
   ];
   console.log(subjects);
   res.render('subjects/index', {subjects: subjects});
