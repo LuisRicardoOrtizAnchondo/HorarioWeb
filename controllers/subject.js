@@ -1,33 +1,37 @@
 const express = require('express');
 const Subject = require('../models/subject');
 const Account = require('../models/account');
+const passport = require('passport');
 
 function newSubject(req, res, next) {
-//if(req.user){
+if(req.user && req.user._id !== '' ){
     //Account.findById(req.user._id, function (err, user) {
             //if (err) {
                 res.render('subjects/new', {error: 'Hubo un error inesperado'})
+
             //}else{
             	let newSubject = new Subject();
-            	newSubject.owner = user;//user._id puede ser
+            	newSubject.owner = user._id;//user._id
             	newSubject.name = req.body.name;
             	newSubject.teacher = req.body.teacher;
             	newSubject.horario = req.body.horario;
             	newSubject.classroom = req.body.classroom;
 
             //}
-            newSubject.save(function (err, document) {
+
+            newSubject.save(function (err, subject) {
                 if (err) {
                     console.log(err)
-                    console.log('No se guardo the subject rayos D:')
-                    return res.render('subject/newSubject', { error : err.message });
+                    console.log('No se guardo the subject rayos D:');
+                    res.render('subject/newSubject', { error : err.message });
+                    return
                 } else {
                     console.log('Materia guardada con exito!!')
                     res.header("Access-Control-Allow-Origin", "*");
                     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type,; Accept");
                     //return res.render('subject/newSubject', { subject, user : req.user });
-                    return res.render('subject/newSubject', { user : req.user });
-
+                    res.render('subject/newSubject', { user : req.user });
+                    return
                 }
             })
 
@@ -36,6 +40,7 @@ function newSubject(req, res, next) {
 }else{
 	res.send('/login')
 }*/
+}
 }
 
 function findUserSubject(req, res, next){
