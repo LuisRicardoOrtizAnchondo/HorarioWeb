@@ -21,6 +21,11 @@ router.get('/new', function(req, res, next){
   //se necesita agregar un post para registrar nuevas materias
 });
 
+router.post('/new', function(req, res, next){
+  res.render('subjects/new', subjectController.newSubject);
+  //se necesita agregar un post para registrar nuevas materias
+});
+
 router.get('/modify', function(req, res, next){
   res.render('subjects/new', {});
   //se cambiará esta ruta a /modify/[:id] y se rellenarán los campos del
