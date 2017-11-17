@@ -1,0 +1,11 @@
+extends ../layout_logged
+include ./test-form
+
+block content
+  div(class="container col-md-6 col-md-offset-2")
+    div(class="panel panel-default")
+      div(class="panel-body")
+        if (!test)
+          +test-form("/test/new", "POST", "Nuevo Examen", "btn btn-primary", "Registrar", subjects)
+        else
+          +test-form("/test/modify", "POST", "Modificar Examen", "btn btn-danger", "Modificar", subjects, test)

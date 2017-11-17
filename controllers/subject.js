@@ -1,11 +1,12 @@
 const express = require('express');
 const Subject = require('../models/subject');
 const Account = require('../models/account');
+
 function newSubject(req, res, next) {
 //if(req.user){
     //Account.findById(req.user._id, function (err, user) {
             //if (err) {
-                res.render('new', {error: 'Hubo un error inesperado'})
+                res.render('subjects/new', {error: 'Hubo un error inesperado'})
             //}else{
             	let newSubject = new Subject();
             	newSubject.owner = user;//user._id puede ser
@@ -26,7 +27,7 @@ function newSubject(req, res, next) {
                     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type,; Accept");
                     //return res.render('subject/newSubject', { subject, user : req.user });
                     return res.render('subject/newSubject', { user : req.user });
-                	
+
                 }
             })
 

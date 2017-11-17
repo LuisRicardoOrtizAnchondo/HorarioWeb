@@ -4,11 +4,11 @@ $("#menu-toggle").click(function(e) {
 });
 
 $(function () {
-    $('#datetimepicker4').datetimepicker();
-});
-
-$(function () {
-    $('#datetimepicker3').datetimepicker({
-        format: 'LT'
-    });
+  $('#datetimepicker4').datetimepicker();
+  $('#dtclock1').datetimepicker({
+      format: 'LT'
+  });
+  $('#dtclock2').datetimepicker({
+      format: 'LT'
+  });
 });

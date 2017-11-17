@@ -6,11 +6,15 @@ const router = express.Router();
 router.get('/', function(req, res, next){
   //encontrar todas las materias que posee el usuario
   //si no se tienen materias renderizar vista que invita a crear una materia
-  res.render('subjects/index', subjectController.findUserSubjects);
+  let subjects = [
+    {name: "Física", teacher: "Lorenzo Armendariz", schedule: [{day: "Lunes", start: "10:00 AM", end: "11:00 AM"}], classroom: "E-27"},
+    {name: "Química", teacher: "Teresa González", schedule: [{day: "Martes", start: "10:00 AM", end: "11:00 AM"}], classroom: "F-31"}
+  ];
+  res.render('subjects/index', {subjects: subjects});
 });
 
 router.get('/new', function(req, res, next){
-  res.render('subjects/new', subjectController.newSubject);
+  res.render('subjects/new', {});
   //se necesita agregar un post para registrar nuevas materias
 });
 
