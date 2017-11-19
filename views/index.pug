@@ -11,7 +11,7 @@ block content
     div(class="content")
       h3 content
   else
-    
+    button#sega.btn.btn-primary Accesar con el SEGA
     div(class="my_login")
       div(class="col-md-offset-11")
         br
@@ -35,5 +35,6 @@ block content
             div(class="col-md-6") 
               br
               +user_form("/subscribe", "POST", "Empieza a usarlo hoy!", "btn btn-primary", "Registrarme", "new")
+    div(id="sega_area")
 
     
