@@ -6,13 +6,10 @@ const router = express.Router();
 router.get('/', function(req, res, next){
   //encontrar todas las materias que posee el usuario
   //si no se tienen materias renderizar vista que invita a crear una materia
-  // la siguiente variable ejemplifica como son los objetos de cada materia
-  // (falta owner id y grupos, si hay)
   let subjects = [
-    {name: "Fisica", teacher: "Javier Mendoza", schedule:[{day:"Lunes", start:"10am", end:"11am"}, {day:"Miércoles", start:"10am", end:"12pm"}], classroom: "E-23"},
-    {name: "Quimica", teacher: "Martha Arreola", schedule:[{day:"Martes", start:"9am", end:"11am"}, {day:"Jueves", start:"8am", end:"10am"}], classroom: "F-15"}
+    {name: "Física", teacher: "Lorenzo Armendariz", schedule: [{day: "Lunes", start: "10:00 AM", end: "11:00 AM"}], classroom: "E-27"},
+    {name: "Química", teacher: "Teresa González", schedule: [{day: "Martes", start: "10:00 AM", end: "11:00 AM"}], classroom: "F-31"}
   ];
-  console.log(subjects);
   res.render('subjects/index', {subjects: subjects});
 });
 

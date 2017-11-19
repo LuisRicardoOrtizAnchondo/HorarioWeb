@@ -1,0 +1,11 @@
+include ../components/link
+
+mixin panel(title, panelClass, test)
+  div(class=panelClass)
+    div(class="panel-heading")
+      div(class="panel-title")
+        +link("#", "btn btn-link btn-xs my-button", "", "fa fa-check-circle fa-lg")
+        |  #{title}
+    div(class="panel-body")
+      p #{test.topics}
+      +link("#", "btn btn-link btn-xs col-md-offset-11", "", "fa fa-share-alt-square fa-lg")

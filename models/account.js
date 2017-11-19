@@ -8,6 +8,7 @@ var Account = new Schema({
     password: String,
     idInscripcion: String,
     idCicloEscolar: String
+    matricula: String
     //grupos: [String]
 
 });

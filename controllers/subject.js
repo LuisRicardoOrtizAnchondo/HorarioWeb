@@ -3,12 +3,12 @@ const Subject = require('../models/subject');
 const Account = require('../models/account');
 const passport = require('passport');
 
-
 function newSubject(req, res, next) {
 if(req.user && req.user._id !== '' ){
     //Account.findById(req.user._id, function (err, user) {
             //if (err) {
                 //res.render('new', {error: 'Hubo un error inesperado'})
+                res.render('subjects/new', {error: 'Hubo un error inesperado'})
             //}else{
             	let newSubject = new Subject();
             	newSubject.owner = user._id;//user._id
@@ -32,7 +32,7 @@ if(req.user && req.user._id !== '' ){
                     //return res.render('subject/newSubject', { subject, user : req.user });
                     res.render('subject/newSubject', { user : req.user });
                     return
-                	
+
                 }
             })
 
@@ -54,9 +54,13 @@ function findUserSubject(req, res, next){
         res.render('subjects/show_all', { subjects: subjects, user : req.user })
       }
 	})
+<<<<<<< HEAD
 
+=======
+>>>>>>> d888d35a2e2de1c485019fc826fa9953fd6ca40e
 }
 
 module.exports ={
-  newSubject
+  newSubject,
+  findUserSubject
 };

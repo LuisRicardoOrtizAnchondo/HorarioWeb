@@ -6,6 +6,6 @@ block content
     div(class="panel panel-default")
       div(class="panel-body")
         if (!homework)
-          +homework-form("/new", "POST", "Nueva Tarea", "btn btn-primary", "Registrar", subjects)
+          +homework-form("/homework/new", "POST", "Nueva Tarea", "btn btn-primary", "Registrar", subjects)
         else
-          +homework-form("/new", "POST", "Nueva Tarea", "btn btn-primary", "Registrar", subjects, homework)
+          +homework-form("/homework/modify", "POST", "Modificar Tarea", "btn btn-danger", "Modificar", subjects, homework)
