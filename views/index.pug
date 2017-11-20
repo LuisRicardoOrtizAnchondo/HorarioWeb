@@ -11,12 +11,15 @@ block content
     div(class="content")
       h3 content
   else
-    button#sega.btn.btn-primary Accesar con el SEGA
     div(class="my_login")
-      div(class="col-md-offset-11")
+      div(class="col-md-1 col-md-offset-9")
         br
         h4
           a(href="#" data-toggle="modal" data-target="#login") Ingresar
+      div(class="col-md-2")
+        br
+        h4
+          a(href="#")| Accesar con SEGA
       +modal_login("login", "/login", "POST")
       div(class="col-md-offset-5")
         br

@@ -54,10 +54,10 @@ function findUserSubject(req, res, next){
         res.render('subjects/show_all', { subjects: subjects, user : req.user })
       }
 	})
-<<<<<<< HEAD
-
-=======
->>>>>>> d888d35a2e2de1c485019fc826fa9953fd6ca40e
+// <<<<<<< HEAD
+//
+// =======
+// >>>>>>> d888d35a2e2de1c485019fc826fa9953fd6ca40e
 }
 
 module.exports ={

@@ -7,7 +7,7 @@ var Account = new Schema({
     email: String,
     password: String,
     idInscripcion: String,
-    idCicloEscolar: String
+    idCicloEscolar: String,
     matricula: String
     //grupos: [String]
 
