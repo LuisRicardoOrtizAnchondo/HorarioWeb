@@ -6,6 +6,6 @@ block content
     div(class="panel panel-default")
       div(class="panel-body")
         if (!test)
-          +test-form("/test/new", "POST", "Nuevo Examen", "btn btn-primary", "Registrar", subjects)
+          +test-form("/test/new", "POST", "Registrar Nuevo Examen", "btn btn-primary", "Registrar", subjects)
         else
           +test-form("/test/modify", "POST", "Modificar Examen", "btn btn-danger", "Modificar", subjects, test)

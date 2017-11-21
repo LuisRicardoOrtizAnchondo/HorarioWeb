@@ -6,10 +6,15 @@ const router = express.Router();
 router.get('/', function(req, res, next){
   let tests = [
     {
-      topics: "String",
-      due: "Date",
-      subject: ""
-    }
+      topics: ["Calcular distancia recorrida", "Calcular velocidad", "Qué son los vectores"],
+      due: "11/20/2017 7:00 PM",
+      subject: "Fisica"
+    },
+    {
+      topics: ["Tipos de mezclas", "Balanceo de ecuaciones", "Familias de los elementos"],
+      due: "11/27/2017 8:00 PM",
+      subject: "Quimica"
+    },
   ];
   res.render('test/index', {tests: tests});
 });

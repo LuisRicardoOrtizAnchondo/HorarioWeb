@@ -5,7 +5,7 @@ const passportLocalMongoose = require('passport-local-mongoose');
 
 var Test = new Schema({
     user: {type: ObjectId, ref: 'account'},
-    topics: String,
+    topics: [String],
     isPublic: Boolean,
     due: Date,
     subject: {type: ObjectId, ref: 'subject'},

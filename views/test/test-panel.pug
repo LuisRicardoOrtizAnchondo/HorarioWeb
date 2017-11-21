@@ -7,5 +7,9 @@ mixin panel(title, panelClass, test)
         +link("#", "btn btn-link btn-xs my-button", "", "fa fa-check-circle fa-lg")
         |  #{title}
     div(class="panel-body")
-      p #{test.topics}
+      h4(class="col-md-offset-2") Temario del examen
+      br
+      each topic in test.topics
+        ul 
+          li #{topic}
       +link("#", "btn btn-link btn-xs col-md-offset-11", "", "fa fa-share-alt-square fa-lg")
