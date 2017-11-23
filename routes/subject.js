@@ -2,8 +2,11 @@ const express = require('express');
 const passport = require('passport');
 const subjectController = require('../controllers/subject');
 const router = express.Router();
+const login = require('../controllers/login')
 
-router.get('/', function(req, res, next){
+
+
+router.get('/', [login.auth, function(req, res, next){
   //encontrar todas las materias que posee el usuario
   //si no se tienen materias renderizar vista que invita a crear una materia
   let subjects = [
@@ -11,9 +14,9 @@ router.get('/', function(req, res, next){
     {name: "Química", teacher: "Teresa González", schedule: [{day: "Martes", start: "10:00 AM", end: "11:00 AM"}], classroom: "F-31"}
   ];
   res.render('subjects/index', {subjects: subjects});
-});
+}]);
 
-router.get('/new', function(req, res, next){
+router.get('/new', login.auth, function(req, res, next){
   res.render('subjects/new', {});
   //se necesita agregar un post para registrar nuevas materias
 });
