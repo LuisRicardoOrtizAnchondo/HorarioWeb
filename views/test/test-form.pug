@@ -23,6 +23,7 @@ mixin test-form(action, method, legend, btnClass, btnText, subjects, test)
           div(class="col-md-10")
             div(class="col-md-10")
               h4 Ingrese tópicos del examen:
+        input(type="text" id="qInputs" name="qInputs" value="" hidden="true")
         div(id="topics")
         +input('fa  fa-calendar-plus-o fa-lg', "text", "Selecciona fecha del examen", "due", "", "datetimepicker4")
         +select('fa  fa-book fa-lg', "subject", subjects)

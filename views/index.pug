@@ -3,23 +3,21 @@ include ./components/navbar
 include ./components/sidebar
 include ./login/user_form
 include ./login/modal_login
+include ./schedule/table
 
 block content
   if (user)
     +sidebar()
     +navbar(user.username)
     div(class="content")
-      h3 content
+      div(class="container col-md-9")
+        +table()
   else
     div(class="my_login")
-      div(class="col-md-1 col-md-offset-9")
+      div(class="col-md-offset-11")
         br
         h4
           a(href="#" data-toggle="modal" data-target="#login") Ingresar
-      div(class="col-md-2")
-        br
-        h4
-          a(href="#")| Accesar con SEGA
       +modal_login("login", "/login", "POST")
       div(class="col-md-offset-5")
         br
