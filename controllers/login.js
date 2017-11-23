@@ -27,8 +27,17 @@ function login(req, res, next){
 }
 
 function logout(req, res, next) {
+    //As seen in passport's documentation 
     req.logout();
     res.redirect('/');
+}
+
+function auth(req, res, next){
+  if (req.user) {
+    next()
+  } else {
+    res.redirect('/')
+  }
 }
 /*
 function uploadAvatar(req, res) {
@@ -46,6 +55,7 @@ module.exports ={
   index,
   subscribe,
   logout,
-  login
+  login,
+  auth
   //uploadAvatar
 };
