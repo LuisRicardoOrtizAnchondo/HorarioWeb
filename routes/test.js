@@ -3,8 +3,11 @@ const testController = require('../controllers.mock/test');
 const login = require('../controllers/login')
 const router = express.Router();
 
-router.get('/', login.auth, testController.findTest);
-router.get('/new', login.auth, testController.newTest);
-router.get('/modify', login.auth, testController.modifyTest);
+router.use(login.auth)
+
+router.get('/', testController.findTest);
+router.get('/new', testController.newTest);
+router.post('/new', testController.saveTest);
+router.get('/modify', testController.modifyTest);
 
 module.exports = router;
