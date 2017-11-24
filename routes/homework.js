@@ -1,30 +1,12 @@
 const express = require('express');
-const passport = require('passport');
-const homeworkController = require('../controllers/homework');
+const homeworkController = require('../controllers.mock/homework');
+const login = require('../controllers/login')
 const router = express.Router();
 
-router.get('/', function(req, res, next){
-  //Se debe hacer una consulta de todas las tareas que existen para esa cuenta
-  // la variable de abajo demuestra como son los objetos de homework y lo que se debe enviar
-  // excepto en la parte de la materia, donde se deberia guardar su id y no el Nombre
-  let homeworks = [
-    {description: "Investigar las partes de la célula y hacer un resumen", due: "11/29/2017 7:00 PM", isDone: false, isPublic: false, subject: "Quimica"},
-    {description: "Hacer ejercicios de libro de física de la página 124", due: "11/27/2017 6:00 PM", isDone: false, isPublic: false, subject: "Fisica"}
-  ];
-  res.render('homework/index', {homeworks: homeworks});
-});
+router.get('/', login.auth, homeworkController.findUserHomeworks);
 
-router.get('/new', function(req, res, next){
-  // se debe hacer una consulta de todas las materias que existen para esa cuenta
-  let subjects = [
-    {name: "Fisica"},
-    {name: "Quimica"}
-  ];
-  res.render('homework/new', {subjects: subjects});
-});
+router.get('/new', login.auth, homeworkController.newHomework);
 
-router.get('/modify', function(req, res, next){
-  res.render('layout_logged', {});
-});
+router.get('/modify', login.auth, homeworkController.modifyHomework);
 
 module.exports = router;
