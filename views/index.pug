@@ -10,8 +10,9 @@ block content
     +sidebar()
     +navbar(user.username)
     div(class="content")
+      h2(class="col-md-offset-4") Horario
       div(class="container col-md-9")
-        +table()
+        +table(subjects)
   else
     div(class="my_login")
       div(class="col-md-offset-11")

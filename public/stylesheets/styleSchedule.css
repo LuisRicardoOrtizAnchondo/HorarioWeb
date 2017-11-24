@@ -1,4 +1,4 @@
-/* -------------------------------- 
+/* --------------------------------
 
 Primary style
 
@@ -23,9 +23,9 @@ a {
   text-decoration: none;
 }
 
-/* -------------------------------- 
+/* --------------------------------
 
-Main Components 
+Main Components
 
 -------------------------------- */
 .cd-schedule {
@@ -294,6 +294,76 @@ Main Components
   opacity: .7;
   line-height: 1.2;
   margin-bottom: .2em;
+}
+
+.cd-schedule .single-event[data-event="blue"],
+.cd-schedule [data-event="blue"] .header-bg {
+  /* this is used to set a background color for the event and the modal window */
+  background: #01A2FF;
+}
+
+.cd-schedule .single-event[data-event="blue"]:hover {
+  background: #4DBEFF;
+}
+
+.cd-schedule .single-event[data-event="green"],
+.cd-schedule [data-event="green"] .header-bg {
+  /* this is used to set a background color for the event and the modal window */
+  background: #35BF8F;
+}
+
+.cd-schedule .single-event[data-event="green"]:hover {
+  background: #40E5AC;
+}
+
+.cd-schedule .single-event[data-event="pink"],
+.cd-schedule [data-event="pink"] .header-bg {
+  /* this is used to set a background color for the event and the modal window */
+  background: #E584BB;
+}
+
+.cd-schedule .single-event[data-event="pink"]:hover {
+  background: #FF93D0;
+}
+
+.cd-schedule .single-event[data-event="grey"],
+.cd-schedule [data-event="grey"] .header-bg {
+  /* this is used to set a background color for the event and the modal window */
+  background: #9EB0CC;
+}
+
+.cd-schedule .single-event[data-event="grey"]:hover {
+  background: #B2C6E5;
+}
+
+.cd-schedule .single-event[data-event="yellow"],
+.cd-schedule [data-event="yellow"] .header-bg {
+  /* this is used to set a background color for the event and the modal window */
+  background: #FFCC09;
+}
+
+.cd-schedule .single-event[data-event="yellow"]:hover {
+  background: #FFDB54;
+}
+
+.cd-schedule .single-event[data-event="orange"],
+.cd-schedule [data-event="orange"] .header-bg {
+  /* this is used to set a background color for the event and the modal window */
+  background: #FF831E;
+}
+
+.cd-schedule .single-event[data-event="orange"]:hover {
+  background: #FF9A46;
+}
+
+.cd-schedule .single-event[data-event="purple"],
+.cd-schedule [data-event="purple"] .header-bg {
+  /* this is used to set a background color for the event and the modal window */
+  background: #731DBF;
+}
+
+.cd-schedule .single-event[data-event="purple"]:hover {
+  background: #8A23E5;
 }
 
 .cd-schedule .single-event[data-event="event-1"],
