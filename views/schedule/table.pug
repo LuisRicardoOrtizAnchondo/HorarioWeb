@@ -1,2 +1,96 @@
 mixin table()
-  
+  link(rel='stylesheet', href='/stylesheets/resetSchedule.css')
+  link(rel='stylesheet', href='/stylesheets/styleSchedule.css')
+  div(class="cd-schedule loading")
+    div(class="timeline")
+      ul
+        li
+          span 8:00
+        li
+          span 8:30
+        li
+          span 9:00
+        li
+          span 9:30
+        li
+          span 10:00
+        li
+          span 10:30
+        li
+          span 11:00
+        li
+          span 11:30
+        li
+          span 12:00
+        li
+          span 12:30
+        li
+          span 13:00
+        li
+          span 13:30
+        li
+          span 14:00
+        li
+          span 14:30
+        li
+          span 15:00
+        li
+          span 15:30
+        li
+          span 16:00
+        li
+          span 16:30
+        li
+          span 17:00
+    div(class="events")
+      ul
+        li(class="events-group")
+          div(class="top-info")
+            span Lunes
+          ul
+            li(class="single-event" data-start="09:00" data-end="10:00" data-content="event-abs-circuit" data-event="event-1")
+              a(href="#0" class="notUnderline")
+                em(class="event-name") Fisica
+            li(class="single-event" data-start="08:00" data-end="09:00" data-event="event-2")
+              a(href="#0" class="notUnderline")
+                em(class="event-name") Quimica
+        
+        li(class="events-group")
+          div(class="top-info")
+            span Martes
+          ul
+            li(class="single-event" data-start="11:00" data-end="12:00" data-event="event-3")
+              a(href="#0" class="notUnderline")
+                em(class="event-name") Matematicas
+            li(class="single-event" data-start="12:00" data-end="13:00" data-event="event-1")
+              a(href="#0" class="notUnderline")
+                em(class="event-name") Fisica
+        
+        li(class="events-group")
+          div(class="top-info")
+            span Miércoles
+          ul
+            li(class="single-event" data-start="11:00" data-end="12:00" data-event="event-4")
+              a(href="#0" class="notUnderline")
+                em(class="event-name") Biología
+            li(class="single-event" data-start="10:00" data-end="11:00" data-event="event-1")
+              a(href="#0" class="notUnderline")
+                em(class="event-name") Fisica
+        
+        li(class="events-group")
+          div(class="top-info")
+            span Jueves
+          ul
+            li(class="single-event" data-start="12:00" data-end="13:00" data-event="event-3")
+              a(href="#0" class="notUnderline")
+                em(class="event-name") Matematicas
+        
+        li(class="events-group")
+          div(class="top-info")
+            span Viernes
+          ul
+            li(class="single-event" data-start="10:00" data-end="11:00" data-event="event-2")
+              a(href="#0" class="notUnderline")
+                em(class="event-name") Quimica
+    div(class="cover-layer")
+              
