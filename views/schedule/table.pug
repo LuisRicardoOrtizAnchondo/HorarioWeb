@@ -1,4 +1,4 @@
-mixin table()
+mixin table(subjects)
   link(rel='stylesheet', href='/stylesheets/resetSchedule.css')
   link(rel='stylesheet', href='/stylesheets/styleSchedule.css')
   div(class="cd-schedule loading")
@@ -48,49 +48,66 @@ mixin table()
           div(class="top-info")
             span Lunes
           ul
-            li(class="single-event" data-start="09:00" data-end="10:00" data-content="event-abs-circuit" data-event="event-1")
-              a(href="#0" class="notUnderline")
-                em(class="event-name") Fisica
-            li(class="single-event" data-start="08:00" data-end="09:00" data-event="event-2")
-              a(href="#0" class="notUnderline")
-                em(class="event-name") Quimica
-        
+            each subject in subjects
+              - var name = subject.name
+              - var color = subject.color
+                each schedule in subject.schedule
+                  if (schedule.day == "Lunes")
+                    li(class="single-event" data-start=schedule.start data-end=schedule.end data-event=color)
+                      a(href="#0" class="notUnderline")
+                        em(class="event-name") #{name}
+                        
         li(class="events-group")
           div(class="top-info")
             span Martes
           ul
-            li(class="single-event" data-start="11:00" data-end="12:00" data-event="event-3")
-              a(href="#0" class="notUnderline")
-                em(class="event-name") Matematicas
-            li(class="single-event" data-start="12:00" data-end="13:00" data-event="event-1")
-              a(href="#0" class="notUnderline")
-                em(class="event-name") Fisica
-        
+            each subject in subjects
+              - var name = subject.name
+              - var color = subject.color
+                each schedule in subject.schedule
+                  if (schedule.day == "Martes")
+                    li(class="single-event" data-start=schedule.start data-end=schedule.end data-event=color)
+                      a(href="#0" class="notUnderline")
+                        em(class="event-name") #{name}
+                        
         li(class="events-group")
           div(class="top-info")
             span Miércoles
           ul
-            li(class="single-event" data-start="11:00" data-end="12:00" data-event="event-4")
-              a(href="#0" class="notUnderline")
-                em(class="event-name") Biología
-            li(class="single-event" data-start="10:00" data-end="11:00" data-event="event-1")
-              a(href="#0" class="notUnderline")
-                em(class="event-name") Fisica
-        
+            each subject in subjects
+              - var name = subject.name
+              - var color = subject.color
+                each schedule in subject.schedule
+                  if (schedule.day == "Miercoles")
+                    li(class="single-event" data-start=schedule.start data-end=schedule.end data-event=color)
+                      a(href="#0" class="notUnderline")
+                        em(class="event-name") #{name}
+                        
         li(class="events-group")
           div(class="top-info")
             span Jueves
           ul
-            li(class="single-event" data-start="12:00" data-end="13:00" data-event="event-3")
-              a(href="#0" class="notUnderline")
-                em(class="event-name") Matematicas
-        
+            each subject in subjects
+              - var name = subject.name
+              - var color = subject.color
+                each schedule in subject.schedule
+                  if (schedule.day == "Jueves")
+                    li(class="single-event" data-start=schedule.start data-end=schedule.end data-event=color)
+                      a(href="#0" class="notUnderline")
+                        em(class="event-name") #{name}
+                        
         li(class="events-group")
           div(class="top-info")
             span Viernes
           ul
-            li(class="single-event" data-start="10:00" data-end="11:00" data-event="event-2")
-              a(href="#0" class="notUnderline")
-                em(class="event-name") Quimica
+            each subject in subjects
+              - var name = subject.name
+              - var color = subject.color
+                each schedule in subject.schedule
+                  if (schedule.day == "Viernes")
+                    li(class="single-event" data-start=schedule.start data-end=schedule.end data-event=color)
+                      a(href="#0" class="notUnderline")
+                        em(class="event-name") #{name}
+          
     div(class="cover-layer")
               
