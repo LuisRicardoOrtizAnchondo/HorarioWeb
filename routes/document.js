@@ -1,7 +1,9 @@
 const express = require('express');
 const documentController = require('../controllers/document');
 const router = express.Router();
+const login = require('../controllers/login')
 
+router.use(login.auth)
 router.get('/', documentController.show);
 
 router.post('/newDocument', documentController.newDocument);

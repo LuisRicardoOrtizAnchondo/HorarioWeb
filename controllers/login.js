@@ -1,7 +1,7 @@
 const express = require('express');
 const passport = require('passport');
 const Account = require('../models/account');
-
+const Subject = require('../models/subject')
 function index(req, res, next){
   // Se tiene que hacer una consulta de las materias que
   // están registradas con el _id del usuario de la sesión
@@ -13,7 +13,12 @@ function index(req, res, next){
     {name: "Física", teacher: "Lorenzo Armendariz", schedule: [{day: "Lunes", start: "10:00", end: "11:00"}, {day: "Miercoles", start: "12:00", end: "13:00"}], classroom: "E-27", color: "yellow"},
     {name: "Química", teacher: "Teresa González", schedule: [{day: "Lunes", start: "11:00", end: "12:00"}, {day: "Martes", start: "10:00", end: "11:00"}, {day: "Jueves", start: "08:00", end: "09:00"}], classroom: "F-31", color: "green"}
   ];
-  res.render('index', { user : req.user, subjects: subjects });
+  /*if(req.user){
+    let subjects = Subject.find({'owner' : req.user._id})
+    res.render('index', { user : req.user, subjects: subjects });
+  }else{*/
+    res.render('index', { user : req.user, subjects: subjects});
+  //}
 }
 
 function subscribe(req, res, next) {
