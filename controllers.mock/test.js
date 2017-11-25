@@ -22,6 +22,10 @@ function newTest(req, res, next){
   res.render('test/new', {subjects: subjects});
 }
 
+function saveTest(req, res, next){
+  res.render('test/new', {subjects: subjects});
+}
+
 function modifyTest(req, res, next){
   res.render('layout_logged', {});
 }
@@ -29,5 +33,6 @@ function modifyTest(req, res, next){
 module.exports = {
   findTest,
   newTest,
+  saveTest,
   modifyTest
 };

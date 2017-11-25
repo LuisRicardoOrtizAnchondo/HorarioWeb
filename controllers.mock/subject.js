@@ -17,6 +17,7 @@ function newSubject(req, res, next){
 
 function saveSubject(req, res, next){
   res.render('subjects/new', {});
+  console.log(req.body)
   //se necesita agregar un post para registrar nuevas materias
 }
 

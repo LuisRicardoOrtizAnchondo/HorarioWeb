@@ -18,6 +18,10 @@ function newHomework(req, res, next){
   res.render('homework/new', {subjects: subjects});
 }
 
+function saveHomework(req, res, next){
+  res.render('layout_logged', {});
+} 
+
 function modifyHomework(req, res, next){
   res.render('layout_logged', {});
 } 
@@ -25,5 +29,6 @@ function modifyHomework(req, res, next){
 module.exports = {
   newHomework,
   findUserHomeworks,
+  saveHomework,
   modifyHomework
 };

@@ -6,19 +6,11 @@ const passportLocalMongoose = require('passport-local-mongoose');
 var Subject = new Schema({
     name: String,
     teacher: String,
+    color: String,
     schedule: [{day: String, start: String, end: String}],
-    groups: [String],
     owner: {type: ObjectId, ref: 'account'},
     classroom: String
 });
-/*
-my.namespace.ColorEnum = {
-    RED : 0,
-    GREEN : 1,
-    BLUE : 2
-}
-*/
-
 
 Subject.plugin(passportLocalMongoose);
 
