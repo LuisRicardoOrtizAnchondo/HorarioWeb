@@ -1,8 +1,13 @@
 const express = require('express');
 const Test = require('../models/test');
+const Subject = require('../models/subject');
 
 function show(req, res, next){
-   Test.find({owner: req.user._id}).exec(function (err, test) {
+
+    let subjects = Subject.find({'owner' : req.user._id});
+
+    res.render('test/new', {subjects: subjects});
+    Test.find({owner: req.user._id}).exec(function (err, test) {
       if (err) {
         res.render('/', { error: 'Ocurrio un error inesperado' })
       } else {
@@ -11,18 +16,28 @@ function show(req, res, next){
 })
 }
 
+function findTest(){
+
+}
 
 function newTest(req, res, next) {
-    Test.register(new Document({ name : req.body.name }), (err, test) => {
-        if (err) {
-          return res.render('/', { error : err.message });
-        } else {
-          return res.render('/', { test });
-        }
+    Subject.find({'owner' : req.user._id}).exec(function(err, subjects){
+        res.render('test/new', {subjects: subjects});
     });
+}
+
+function saveTest(req, res, next){
+    res.render('test/new', {subjects: subjects});
+}
+
+function modifyTest(req, res, next){
+    res.render('layout_logged', {});
 }
 
 module.exports = {
   show,
-  newTest
+  findTest,
+  newTest,
+  saveTest,
+  modifyTest
 };
