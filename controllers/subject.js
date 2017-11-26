@@ -67,8 +67,7 @@ function saveSubject(req, res, next){
             console.log("El error fue:" + err)
             console.log('No se guardo the subject rayos D:');
             //res.render('subject/newSubject', { error : err.message });
-            res.render('subjects/new', {message: "Materia guardada con exito!"});
-
+            res.render('subjects/new', {message: "Materia no guardada :c"});
             return
         } else {
             console.log('Materia guardada con exito!!')
@@ -76,7 +75,7 @@ function saveSubject(req, res, next){
             res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type,; Accept");
             //return res.render('subject/newSubject', { subject, user : req.user });
             //res.render('subject/newSubject', { user : req.user });
-            res.render('subjects/new', {message: "Materia guardada con exito!"});
+            res.render('subjects/index', {message: "Materia guardada con exito!"});
             return
 
         }
