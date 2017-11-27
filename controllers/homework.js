@@ -29,19 +29,17 @@ function newHomework(req, res, next) {
 function findUserHomeworks(req, res, next){
   //encontrar todas las materias que posee el usuario
   //si no se tienen materias renderizar vista que invita a crear una materia
-    /*
-  Homework.find({owner: req.user._id}).exec(function (err, Homeworks) {
-      if (err) {
-        res.render('home', { error: 'Ocurrio un error inesperado' })
-      } else {
-        res.render('Homeworks/show_all', { Homeworks: Homeworks, user : req.user })
-      }
-  })*/
-    let homeworks = [
-        {description: "Investigar las partes de la célula y hacer un resumen", due: "11/29/2017 7:00 PM", isDone: false, isPublic: false, subject: "Quimica"},
-        {description: "Hacer ejercicios de libro de física de la página 124", due: "11/27/2017 6:00 PM", isDone: false, isPublic: false, subject: "Fisica"}
-    ];
-    return res.render('homework/new', {homeworks: homeworks});
+
+    Homework.find({'owner': req.user._id}, function(err, homeworks){
+        //if(homeworks == []){
+        // return res.render('homework/new'); //añadir flash invitandolo a crear una tarea
+        // }else{}
+        if(err){
+            console.log("Error: " + err);
+        }else{
+            return res.render('homework/index', {homeworks: homeworks});
+        }
+    })
 }
 
 function saveHomework(req, res, next){

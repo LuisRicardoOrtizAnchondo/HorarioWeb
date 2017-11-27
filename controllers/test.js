@@ -16,8 +16,33 @@ function show(req, res, next){
 })
 }
 
-function findTest(){
+function findTest(req, res, next){
+    /*let tests = [
+        {
+            topics: ["Calcular distancia recorrida", "Calcular velocidad", "Qué son los vectores"],
+            due: "11/20/2017 7:00 PM",
+            subject: "Fisica"
+        },
+        {
+            topics: ["Tipos de mezclas", "Balanceo de ecuaciones", "Familias de los elementos"],
+            due: "11/27/2017 8:00 PM",
+            subject: "Quimica"
+        },
+    ];*/
+    //return res.render('test/index', {tests: tests});
 
+    Test.find({'user': req.user._id}, function(err, tests){
+        //if(tests == []){
+        // return res.render('test/new'); //añadir flash invitandolo a crear un examen
+        // }else{}
+        if(err){
+            console.log("Error: " + err);
+        }else{
+            console.log("Noticias");
+            console.log(tests);
+            return res.render('test/index', {tests: tests});
+        }
+    })
 }
 
 function newTest(req, res, next) {
