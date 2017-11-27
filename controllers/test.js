@@ -27,7 +27,42 @@ function newTest(req, res, next) {
 }
 
 function saveTest(req, res, next){
-    res.render('test/new', {subjects: subjects});
+
+    Subject.find({'name': req.body.subject, 'owner': req.user._id}, function(err, subjects){
+        if(err){
+            console.log("Error: " + err);
+        }
+        let newTest = new Test();
+        newTest.user = req.user._id;
+        newTest.topics = req.body.testTopics;
+        //newTest.due = req.body.due;
+        newTest.subject = subjects[0]._id;
+        console.log(subjects);
+        console.log('MateriaID (Test): ' + newTest.subject);
+        //return res.render('test/new', {subjects: subjects});
+        newTest.save(function (err, test) {
+            Subject.find({'owner' : req.user._id}).exec(function(err, subjects){
+
+                if (err) {
+                    console.log("El error fue:" + err)
+                    console.log('No se guardo el examen, rayos D:');
+                    //res.render('subject/newSubject', { error : err.message });
+                    return res.render('test/new', {message: "Test no guardado :c", subjects: subjects});
+                } else {
+                    console.log('Test guardado con exito!!')
+                    res.header("Access-Control-Allow-Origin", "*");
+                    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type,; Accept");
+                    //return res.render('subject/newSubject', { subject, user : req.user });
+                    //res.render('subject/newSubject', { user : req.user });
+                    return res.render('test/new', {message: "Test guardado con exito!", subjects: subjects});
+
+                }
+            });
+        })
+
+    });
+
+
 }
 
 function modifyTest(req, res, next){
