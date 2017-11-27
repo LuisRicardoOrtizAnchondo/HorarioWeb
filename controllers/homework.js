@@ -46,34 +46,48 @@ function findUserHomeworks(req, res, next){
 
 function saveHomework(req, res, next){
     console.log('Conteniduki');
-    //console.log('Conteniduki' + req.body);
+    console.log(req.body);
     let newHomework = new Homework();
     newHomework.description = req.body.description;
-    newHomework.teacher = req.body.teacher;
-    newHomework.isDone = req.body.isDone;
+    newHomework.isDone = false;
     //newHomework.due = req.body.due;
     //newHomework.subject = Homework.find({'owner' : req.user._id,  });
-    Subject.find({'name': req.body.name, 'owner': req.user._id}, function(err, result){
-        newHomework.subject = result._id;
+    Subject.find({'name': req.body.subject, 'owner': req.user._id}, function(err, result){
+        console.log(result);
+        newHomework.subject = result[0]._id;
         console.log('MateriaID: ' + newHomework.subject);
     });
+    //newHomework.subject = subjects._id;
+    console.log("looking");
+    //console.log(subjects);
+
     //newHomework.subject = ;
     newHomework.owner = req.user._id;//user._id puede ser
 
-    newHomework.save(function (err, homeworks) {
-        if (err) {
-            console.log(err)
-            console.log('No se guardo the Homework rayos D:')
-            return res.render('homework/new', { error : err.message });
-        } else {
-            console.log('Tarea guardada con exito!!')
-            res.header("Access-Control-Allow-Origin", "*");
-            res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type,; Accept");
-            //return res.render('Homework/newHomework', { Homework, user : req.user });
-            return res.render('homework/index', { homeworks : homeworks });
+    Subject.find({'owner': req.user._id}, function(err, subject){
+        if(err){
+            console.log("Error fue: " + err);
+        }else{
+            let subjects = subject;
+            console.log(subjects);
+            //return res.render('homework/new', {subjects: subjects});
+            newHomework.save(function (err, homeworks) {
+                if (err) {
+                    console.log(err)
+                    console.log('No se guardo the Homework rayos D:')
+                    return res.render('homework/new', { error : err.message });
+                } else {
+                    console.log('Tarea guardada con exito!!')
+                    res.header("Access-Control-Allow-Origin", "*");
+                    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type,; Accept");
+                    //return res.render('Homework/newHomework', { Homework, user : req.user });
+                    return res.render('homework/new', { subjects: subjects });
 
+                }
+            })
         }
     })
+
 }
 
 function modifyHomework(req, res, next){
