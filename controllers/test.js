@@ -27,7 +27,8 @@ function newTest(req, res, next) {
 }
 
 function saveTest(req, res, next){
-
+    console.log("Cuerpo del test request:");
+    console.log(req.body);
     Subject.find({'name': req.body.subject, 'owner': req.user._id}, function(err, subjects){
         if(err){
             console.log("Error: " + err);
@@ -35,12 +36,16 @@ function saveTest(req, res, next){
         let newTest = new Test();
         newTest.user = req.user._id;
         newTest.topics = req.body.testTopics;
-        //newTest.due = req.body.due;
+        newTest.due = new Date(req.body.due.replace( /(\d{2})\/(\d{2})\/(\d{4})/, "$2/$1/$3"));
         newTest.subject = subjects[0]._id;
         console.log(subjects);
         console.log('MateriaID (Test): ' + newTest.subject);
         //return res.render('test/new', {subjects: subjects});
         newTest.save(function (err, test) {
+            if(err){
+
+                console.log("Error fue: " + err);
+            }else{
             Subject.find({'owner' : req.user._id}).exec(function(err, subjects){
 
                 if (err) {
@@ -58,6 +63,7 @@ function saveTest(req, res, next){
 
                 }
             });
+            }
         })
 
     });

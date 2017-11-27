@@ -50,7 +50,7 @@ function saveHomework(req, res, next){
     let newHomework = new Homework();
     newHomework.description = req.body.description;
     newHomework.isDone = false;
-    //newHomework.due = req.body.due;
+    newHomework.due = new Date(req.body.due.replace( /(\d{2})\/(\d{2})\/(\d{4})/, "$2/$1/$3"));
     //newHomework.subject = Homework.find({'owner' : req.user._id,  });
     Subject.find({'name': req.body.subject, 'owner': req.user._id}, function(err, result){
         console.log(result);
