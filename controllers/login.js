@@ -2,6 +2,7 @@ const express = require('express');
 const passport = require('passport');
 const Account = require('../models/account');
 const Subject = require('../models/subject')
+
 function index(req, res, next){
   // Se tiene que hacer una consulta de las materias que
   // están registradas con el _id del usuario de la sesión
