@@ -23,7 +23,7 @@ app.set('port', port);
 var server = http.createServer(app);
 
 /* Database conection */
-mongoose.connect("mongodb://nuria:nuriapass@ds125016.mlab.com:25016/show_time", {
+mongoose.connect("mongodb://nuria:nuriapass@ds123976.mlab.com:23976/show_time", {
   useMongoClient: true
 })
 

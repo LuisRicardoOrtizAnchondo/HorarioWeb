@@ -6,9 +6,9 @@ const passportLocalMongoose = require('passport-local-mongoose');
 var Homework = new Schema({
     description: String,
     isDone: Boolean,
-    due: Date, // formato de fecha -> dia/mes/año 
-    subject: {type: ObjectId, ref: 'subject'},
-    owner: {type: ObjectId, ref: 'user'}
+    due: String, // formato de fecha -> dia/mes/año
+    subject: String, //{type: ObjectId, ref: 'subject'},
+    owner: {type: ObjectId, ref: 'account', index: {unique: false}}
 });
 
 Homework.plugin(passportLocalMongoose);

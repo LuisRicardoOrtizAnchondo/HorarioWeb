@@ -1,5 +1,5 @@
 const express = require('express');
-const homeworkController = require('../controllers.mock/homework');
+const homeworkController = require('../controllers/homework');
 const login = require('../controllers/login')
 const router = express.Router();
 
