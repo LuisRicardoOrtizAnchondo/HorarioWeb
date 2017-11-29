@@ -12,7 +12,7 @@ html
     link(rel='stylesheet', href='/stylesheets/bootstrap-datetimepicker.min.css')
   body(style="padding:0;")
     +sidebar()
-    +navbar(user)
+    +navbar(user.username)
     div(class="content")
       block content
   script(src='/javascripts/jquery.min.js')

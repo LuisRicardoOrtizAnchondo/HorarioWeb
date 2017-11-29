@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const login = require('../controllers/login')
-const subjectController = require('../controllers.mock/subject')
+const subjectController = require('../controllers/subject')
 
 router.use(login.auth)
 

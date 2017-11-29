@@ -4,24 +4,34 @@ const Account = require('../models/account');
 const passport = require('passport');
 
 function newSubject(req, res, next){
-
-    let subjects = Subject.find({'owner' : req.user._id})
-
-    res.render('subjects/new', {subjects: subjects, user : req.user});
-    // se debe hacer una consulta de todas las materias que existen para esa cuenta
-
+  res.render('subjects/new', {user : req.user});
 }
 
+function saveSubject(req, res, next){
 
-//function newSubject(req, res, next) {
+  let mySchedule = [];
 
-    //Account.findById(req.user._id, function (err, user) {
-            //if (err) {
-                //res.render('new', {error: 'Hubo un error inesperado'})
-                //res.render('subjects/new', {error: 'Hubo un error inesperado'})
-            //}else{
+  for (let i = 0; i < req.body.subjectDay.length; i++) {
+    mySchedule[i] = {day: req.body.subjectDay[i], start: req.body.subjectStart, end: req.body.subjectEnd}
+  }
 
-//}
+  let subject = new Subject({
+    name: req.body.subjectName,
+    teacher: req.body.subjectTeacher,
+    color: req.body.subjectColor,
+    schedule: mySchedule,
+    owner: req.user,
+    classroom: req.body.subjectClassroom
+  });
+
+  subject.save( err => {
+    if(err){
+      res.render('subjects/new', {message: "No se pudo guardar materia!", user : req.user});
+    } else {
+      res.render('subjects/new', {message: "Materia guardada con exito!", user : req.user});
+    }
+  });
+}
 
 function findSubject(req, res, next){
 	//encontrar todas las materias que posee el usuario
@@ -38,53 +48,6 @@ function findSubject(req, res, next){
         }
     })
 
-}
-
-function saveSubject(req, res, next){
-    //res.render('subjects/new', {});
-    console.log(req.body)
-    console.log("Instanciando materia");
-    let newSubject = new Subject();
-    newSubject.owner = req.user._id;//user._id
-    newSubject.name = req.body.subjectName;
-    newSubject.teacher = req.body.subjectTeacher;
-    //newSubject.color = req.body.color
-    //newSubject.horario = req.body.horario;
-    //newSubject.day = req.body.subjectDay;
-    //newSubject.start = req.body.subjectStart;
-    //newSubject.end = req.body.subjectEnd;
-    //subjectDay: req.body.subjectDay,
-    //newSubject.schedule = [{ subjectStart: req.body.subjectStart, subjectEnd: req.body.subjectEnd}],
-    newSubject.schedule.day = req.body.subjectDay[0];
-        console.log("Dias: " + req.body.subjectDay[0]);
-        console.log("ejem: " + req.body.subjectStart);
-    newSubject.schedule.start = req.body.subjectStart;
-    newSubject.schedule.end = req.body.subjectEnd;
-    newSubject.classroom = req.body.subjectClassroom;
-
-    console.log("A punto de salvar");
-
-    newSubject.save(function (err, subject) {
-        if (err) {
-            console.log("El error fue:" + err)
-            console.log('No se guardo the subject rayos D:');
-            //res.render('subject/newSubject', { error : err.message });
-            res.render('subjects/new', {message: "Materia no guardada :c"});
-            return
-        } else {
-            console.log('Materia guardada con exito!!')
-            res.header("Access-Control-Allow-Origin", "*");
-            res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type,; Accept");
-            //return res.render('subject/newSubject', { subject, user : req.user });
-            //res.render('subject/newSubject', { user : req.user });
-            res.render('subjects/index', {message: "Materia guardada con exito!", user : req.user});
-            return
-
-        }
-    })
-
-
-    //se necesita agregar un post para registrar nuevas materias
 }
 
 function modifySubject(req, res, next){
