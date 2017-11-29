@@ -1,6 +1,8 @@
 include ../components/link
+include ./modal_subject
 
 mixin tab(subjects)
+  
   div
     //- Nav tabs
     - var first = "active"
@@ -19,7 +21,9 @@ mixin tab(subjects)
             div(class="panel-body")
               - content = ""
               div(class="col-md-offset-11")
-                +link('#', 'btn btn-primary btn-xs', '', 'fa  fa-pencil-square-o fa-lg')
+                a(href='#' class='btn btn-primary btn-xs' data-toggle="modal" data-target=`#${subject.name}`)
+                  span(class='fa  fa-pencil-square-o fa-lg')
+                +modal_subject(subject.name, "#", "POST", subject)
               h2(class="col-md-offset-5") #{subject.name}
               br
               h4(class="col-md-offset-4")= `Impartida por: ${subject.teacher}`
@@ -28,5 +32,4 @@ mixin tab(subjects)
               ul(class="col-md-offset-4")
                 each period in subject.schedule
                   li=`${period.day} de ${period.start} a ${period.end}`
-              
               

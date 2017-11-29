@@ -38,9 +38,6 @@ function saveSubject(req, res, next){
 }
 
 function findSubject(req, res, next){
-	//encontrar todas las materias que posee el usuario
-  //si no se tienen materias renderizar vista que invita a crear una materia
-
     Subject.find({'owner': req.user._id}, function(err, subjects){
         //if(homeworks == []){
         // return res.render('homework/new'); //añadir flash invitandolo a crear una tarea
