@@ -1,6 +1,7 @@
 include ../components/inputForm
 include ../components/buttonForm
 include ../components/checkboxForm
+include ../components/selectForm
 
 mixin subject-form(action, method, legend, btnClass, btnText)
   form(class="form-horizontal", action=action, method=method)
@@ -9,6 +10,7 @@ mixin subject-form(action, method, legend, btnClass, btnText)
         div(class="col-md-offset-5") #{legend}
       +input('fa  fa-book fa-lg', "text", "Nombre de la materia", "subjectName")
       +input('fa  fa-user-circle fa-lg', "text", "Nombre del maestro", "subjectTeacher")
+      +select('fa fa-paint-brush fa-lg', "subjectColor", [{ name : "blue"}, { name : "green"}, { name : "pink"}, { name : "grey"}, { name : "yellow"}, { name : "orange"}, { name : "purple"}])
       div(class="form-group")
         label(class="col-md-2 control-label") 
           span(class='fa fa-calendar-plus-o fa-lg')
