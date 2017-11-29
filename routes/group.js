@@ -5,10 +5,10 @@ const login = require('../controllers/login')
 
 router.use(login.auth)
 
-router.get('/', groupController.findUserGroups);
+router.get('/', groupController.findGroup);
 router.get('/new', groupController.newGroup);
 router.post('/new', groupController.saveGroup);
-router.get('/modify/:id', groupController.modifyGrupoView);
+router.get('/modify/:id', groupController.modifyGroupView);
 router.post('/modify', groupController.modifyGroup);
 
 module.exports = router;

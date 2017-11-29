@@ -5,6 +5,29 @@ function newGroup(req, res, next){
     res.render('groups/new', {user : req.user});
 }
 
+function saveGroup(req, res, next){
+    if (req.body.name != '' && req.body.subject != ''){
+        let newGroup = new Group({
+            name: req.body.name,
+            subject: req.body.subject,
+            members: req.body.members,
+            homeworks: req.body.homeworks,
+            owner: req.user._id
+        });
+
+        group.save( err => {
+            if(err){
+                console.log(err);
+                res.redirect('new');
+            } else {
+                console.log("exito!");
+                res.redirect('/group');
+            }
+        });
+    }else{
+        res.render('group/new',{message: 'Por favor, rellena el nombre del grupo y su materia'});
+    }
+}
 
 function findGroup(req, res, next){
 
@@ -44,7 +67,7 @@ function modifyGroup(req, res, next){
     res.render('layout_logged', {user : req.user, group: group, message: 'Grupo creado exitosamente!'});
 }
 
-function modifyTestView(req, res, next){
+function modifyGroupView(req, res, next){
     Group.find({'owner': req.user._id, '_id': req.params.id}, function(err, group) {
         res.render('group/new', {group: group});
     })
@@ -55,10 +78,10 @@ function addUserToGroup(req, res, next){
 }
 
 module.exports ={
-  show,
   newGroup,
   findGroup,
+  saveGroup,
   modifyGroup,
-  modifyTestView,
+  modifyGroupView,
   addUserToGroup
 };
