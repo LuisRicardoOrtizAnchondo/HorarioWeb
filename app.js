@@ -7,6 +7,7 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
+const FacebookStrategy = require('passport-facebook').Strategy;
 
 var login = require('./routes/login');
 var users = require('./routes/users');
@@ -50,6 +51,37 @@ var Account = require('./models/account');
 passport.use(new LocalStrategy(Account.authenticate()));
 passport.serializeUser(Account.serializeUser());
 passport.deserializeUser(Account.deserializeUser());
+
+//facebook stuff
+passport.use(new FacebookStrategy({
+        clientID: '292701184584377',
+        clientSecret: 'd300560cd0a7422e557cffa00124cd88',
+        callbackURL: "http://localhost:3000/auth/facebook/callback"
+    },
+    function(accessToken, refreshToken, profile, cb) {
+        User.findOrCreate({ facebookId: profile.id }, function (err, user) {
+            if(err){
+                console.log("Error con facebook: " + err);
+            }
+            if(user){
+                return cb(err, user);
+            }else{
+                let account = new Account();
+                account.facebook.id = profile.id;
+                acccount.facebook.token = accessToken;
+                account.facebook.name = profile.givenName + ' ' + profile.familyName;
+                account.facebook.email = profile.emails[0].value();
+
+                account.save(function (err) {
+                    if(err){
+                        console.log("Error al salvar desde facebook: " + err);
+                    }
+                    return cb(err, account);
+                })
+            }
+        });
+    }
+));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
