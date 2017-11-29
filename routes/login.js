@@ -7,9 +7,11 @@ router.get('/', loginController.index);
 
 router.post('/subscribe', loginController.subscribe);
 
-router.post('/login', passport.authenticate('local'), function(req, res) {
+router.post('/login', passport.authenticate('local', { failureRedirect: '/error' }), function(req, res) {
     res.redirect('/');
 });
+
+router.get('/error', loginController.error);
 
 router.get('/logout', loginController.logout);
 

@@ -48,6 +48,10 @@ function logout(req, res, next) {
     res.redirect('/');
 }
 
+function error(req, res, next) {
+  res.render('index', {error: "Usuario o contraseña incorrecta"});
+}
+
 function auth(req, res, next){
   if (req.user) {
     next()
@@ -72,6 +76,7 @@ module.exports ={
   subscribe,
   logout,
   login,
+  error,
   auth
   //uploadAvatar
 };

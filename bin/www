@@ -23,9 +23,7 @@ app.set('port', port);
 var server = http.createServer(app);
 
 /* Database conection */
-// mongoose.connect("mongodb://RichiOh96:LROASNAKE96PLUS*+-@ds231725.mlab.com:31725/mongo_database", {
 mongoose.connect("mongodb://nuria:nuriapass@ds125016.mlab.com:25016/show_time", {
-  // mongoose.connect("mongodb://localhost/horarioWeb", {
   useMongoClient: true
 })
 

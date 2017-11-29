@@ -1,0 +1,6 @@
+mixin error(message)
+  div(class="col-md-offset-3 col-md-6")
+    div(class="alert alert-dismissible alert-warning")
+      button(type="button" class="close" data-dismiss="alert") &times;
+      h4 Error!
+      p=message

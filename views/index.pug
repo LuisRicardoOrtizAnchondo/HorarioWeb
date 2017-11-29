@@ -4,6 +4,7 @@ include ./components/sidebar
 include ./login/user_form
 include ./login/modal_login
 include ./schedule/table
+include ./components/errorMessage
 
 block content
   if (user)
@@ -37,6 +38,7 @@ block content
             div(class="col-md-6") 
               br
               +user_form("/subscribe", "POST", "Empieza a usarlo hoy!", "btn btn-primary", "Registrarme", "new")
-    div(id="sega_area")
+      if (error)
+        +error(error)
 
     
