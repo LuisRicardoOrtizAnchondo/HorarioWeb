@@ -164,7 +164,9 @@ function modifyHomework(req, res, next){
 }
 
 function modifyHomeworkView(req, res, next){
-    res.render('homework/modify', {user : req.user});
+    Subject.find({'owner': req.user._id, '_id': req.params.id}, function(err, homework) {
+        res.render('homework/new', {user: req.user, homework: homework});
+    })
 }
 
 

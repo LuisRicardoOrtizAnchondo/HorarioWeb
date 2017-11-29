@@ -8,6 +8,7 @@ router.use(login.auth)
 router.get('/', subjectController.findSubject);
 router.get('/new', subjectController.newSubject);
 router.post('/new', subjectController.saveSubject);
-router.get('/modify', subjectController.modifySubject);
+router.get('/modify/:id', subjectController.modifySubjectView);
+router.post('/modify', subjectController.modifySubject);
 
 module.exports = router;

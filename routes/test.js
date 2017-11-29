@@ -8,6 +8,7 @@ router.use(login.auth)
 router.get('/', testController.findTest);
 router.get('/new', testController.newTest);
 router.post('/new', testController.saveTest);
-router.get('/modify', testController.modifyTest);
+router.get('/modify/:id', testController.modifyTestView);
+router.post('/modify', testController.modifyTest);
 
 module.exports = router;

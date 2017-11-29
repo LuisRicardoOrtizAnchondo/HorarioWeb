@@ -100,7 +100,34 @@ function saveTest(req, res, next){
 }
 
 function modifyTest(req, res, next){
-    res.render('layout_logged', {});
+    //Find a record with given id
+    let find = {
+        _id: req.body.homeworkId,
+        owner: req.user._id
+    }
+    //Put any data the request have into an object
+    let replace = {
+        topics: res.body.topics,
+        teacher: res.body.due,
+        due: res.body.due,
+        subject: res.body.subject,
+        isDone: false,
+        owner: req.user._id,
+        classroom: req.body.subjectClassroom
+    };
+
+    Test.findOneAndUpdate(find, replace, function (err, test) {
+        console.log("Modificando exámen: ");
+        console.log(test);
+    })
+
+    res.render('layout_logged', {user : req.user});
+}
+
+function modifyTestView(req, res, next){
+    Test.find({'owner': req.user._id, '_id': req.params.id}, function(err, test) {
+        res.render('test/new', {test: test});
+    })
 }
 
 module.exports = {
@@ -108,5 +135,6 @@ module.exports = {
   findTest,
   newTest,
   saveTest,
-  modifyTest
+  modifyTest,
+  modifyTestView
 };
