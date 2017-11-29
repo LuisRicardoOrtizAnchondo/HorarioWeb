@@ -17,19 +17,6 @@ function show(req, res, next){
 }
 
 function findTest(req, res, next){
-    /*let tests = [
-        {
-            topics: ["Calcular distancia recorrida", "Calcular velocidad", "Qué son los vectores"],
-            due: "11/20/2017 7:00 PM",
-            subject: "Fisica"
-        },
-        {
-            topics: ["Tipos de mezclas", "Balanceo de ecuaciones", "Familias de los elementos"],
-            due: "11/27/2017 8:00 PM",
-            subject: "Quimica"
-        },
-    ];*/
-    //return res.render('test/index', {tests: tests});
 
     Test.find({'user': req.user._id}, function(err, tests){
         //if(tests == []){
@@ -52,48 +39,64 @@ function newTest(req, res, next) {
 }
 
 function saveTest(req, res, next){
-    console.log("Cuerpo del test request:");
-    console.log(req.body);
-    Subject.find({'name': req.body.subject, 'owner': req.user._id}, function(err, subjects){
-        if(err){
-            console.log("Error: " + err);
-        }
-        let newTest = new Test();
-        newTest.user = req.user._id;
-        newTest.topics = req.body.testTopics;
-        newTest.due = new Date(req.body.due.replace( /(\d{2})\/(\d{2})\/(\d{4})/, "$2/$1/$3"));
-        newTest.subject = subjects[0]._id;
-        console.log(subjects);
-        console.log('MateriaID (Test): ' + newTest.subject);
-        //return res.render('test/new', {subjects: subjects});
-        newTest.save(function (err, test) {
-            if(err){
 
-                console.log("Error fue: " + err);
-            }else{
-            Subject.find({'owner' : req.user._id}).exec(function(err, subjects){
+  let test = new Test({
+    user: req.user._id,
+    topics: req.body.testTopics,
+    due: req.body.due,
+    subject: req.body.subject,
+    isDone: false
+  });
 
-                if (err) {
-                    console.log("El error fue:" + err)
-                    console.log('No se guardo el examen, rayos D:');
-                    //res.render('subject/newSubject', { error : err.message });
-                    return res.render('test/new', {message: "Test no guardado :c", subjects: subjects});
-                } else {
-                    console.log('Test guardado con exito!!')
-                    res.header("Access-Control-Allow-Origin", "*");
-                    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type,; Accept");
-                    //return res.render('subject/newSubject', { subject, user : req.user });
-                    //res.render('subject/newSubject', { user : req.user });
-                    return res.render('test/new', {message: "Test guardado con exito!", subjects: subjects, user : req.user});
-
-                }
-            });
-            }
-        })
-
-    });
-
-
+  test.save( err => {
+    if(err){
+      console.log(err);
+      res.redirect('new');
+    } else {
+      console.log("exito!");
+      res.redirect('/test');
+    }
+  });
+    // console.log("Cuerpo del test request:");
+    // console.log(req.body);
+    // Subject.find({'name': req.body.subject, 'owner': req.user._id}, function(err, subjects){
+    //     if(err){
+    //         console.log("Error: " + err);
+    //     }
+    //     let newTest = new Test();
+    //     newTest.user = req.user._id;
+    //     newTest.topics = req.body.testTopics;
+    //     newTest.due = new Date(req.body.due.replace( /(\d{2})\/(\d{2})\/(\d{4})/, "$2/$1/$3"));
+    //     newTest.subject = subjects[0]._id;
+    //     console.log(subjects);
+    //     console.log('MateriaID (Test): ' + newTest.subject);
+    //     //return res.render('test/new', {subjects: subjects});
+    //     newTest.save(function (err, test) {
+    //         if(err){
+    //
+    //             console.log("Error fue: " + err);
+    //         }else{
+    //         Subject.find({'owner' : req.user._id}).exec(function(err, subjects){
+    //
+    //             if (err) {
+    //                 console.log("El error fue:" + err)
+    //                 console.log('No se guardo el examen, rayos D:');
+    //                 //res.render('subject/newSubject', { error : err.message });
+    //                 return res.render('test/new', {message: "Test no guardado :c", subjects: subjects});
+    //             } else {
+    //                 console.log('Test guardado con exito!!')
+    //                 res.header("Access-Control-Allow-Origin", "*");
+    //                 res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type,; Accept");
+    //                 //return res.render('subject/newSubject', { subject, user : req.user });
+    //                 //res.render('subject/newSubject', { user : req.user });
+    //                 return res.render('test/new', {message: "Test guardado con exito!", subjects: subjects, user : req.user});
+    //
+    //             }
+    //         });
+    //         }
+    //     })
+    //
+    // });
 }
 
 function modifyTest(req, res, next){

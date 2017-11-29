@@ -56,16 +56,13 @@ function saveHomework(req, res, next){
     owner: req.user._id
   });
 
-  console.log("########## dentro de save #################");
-  console.log(homework);
-
   homework.save( err => {
     if(err){
       console.log(err);
       res.redirect('new');
     } else {
       console.log("exito!");
-      res.redirect('/');
+      res.redirect('/homework');
     }
   });
 
@@ -117,19 +114,16 @@ function saveHomework(req, res, next){
 
 
 function findUserHomeworks(req, res, next){
-  //encontrar todas las materias que posee el usuario
-  //si no se tienen materias renderizar vista que invita a crear una materia
-
-    Homework.find({'owner': req.user._id}, function(err, homeworks){
-        //if(homeworks == []){
-        // return res.render('homework/new'); //añadir flash invitandolo a crear una tarea
-        // }else{}
-        if(err){
-            console.log("Error: " + err);
-        }else{
-            return res.render('homework/index', {homeworks: homeworks, user : req.user});
-        }
-    })
+  Homework.find({'owner': req.user._id}, function(err, homeworks){
+      //if(homeworks == []){
+      // return res.render('homework/new'); //añadir flash invitandolo a crear una tarea
+      // }else{}
+      if(err){
+          console.log("Error: " + err);
+      }else{
+          return res.render('homework/index', {homeworks: homeworks, user : req.user});
+      }
+  });
 }
 
 
