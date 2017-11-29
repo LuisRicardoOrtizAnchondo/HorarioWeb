@@ -1,5 +1,8 @@
-mixin checkbox(name, value, text)
+mixin checkbox(name, value, text, check)
   div(class="checkbox")
     label
-      input(type="checkbox" name=name value=value) 
+      if (check)
+        input(type="checkbox" name=name value=value checked) 
+      else
+        input(type="checkbox" name=name value=value)
       p #{text}

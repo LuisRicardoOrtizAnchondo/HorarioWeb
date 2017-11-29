@@ -1,0 +1,11 @@
+include ./subject-form
+
+mixin modal_subject(name, action, method, subject)
+  div(class="modal fade" id=name)
+    div(class="modal-dialog")
+      div(class="modal-content")
+        div(class="modal-body")
+          button(type="button" class="close" data-dismiss="modal" aria-label="Close" data-backdrop="false")
+            span(aria-hidden="true") &times;
+          div
+            +subject-form(action, method, "Modificar materia", "btn btn-primary", "Modificar", subject)

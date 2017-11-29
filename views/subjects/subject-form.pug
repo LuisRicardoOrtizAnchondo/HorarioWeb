@@ -3,26 +3,50 @@ include ../components/buttonForm
 include ../components/checkboxForm
 include ../components/selectForm
 
-mixin subject-form(action, method, legend, btnClass, btnText)
-  form(class="form-horizontal", action=action, method=method)
-    fieldset
-      legend 
-        div(class="col-md-offset-5") #{legend}
-      +input('fa  fa-book fa-lg', "text", "Nombre de la materia", "subjectName")
-      +input('fa  fa-user-circle fa-lg', "text", "Nombre del maestro", "subjectTeacher")
-      +select('fa fa-paint-brush fa-lg', "subjectColor", [{ name : "blue"}, { name : "green"}, { name : "pink"}, { name : "grey"}, { name : "yellow"}, { name : "orange"}, { name : "purple"}])
-      div(class="form-group")
-        label(class="col-md-2 control-label") 
-          span(class='fa fa-calendar-plus-o fa-lg')
-        div(class="col-md-10")
-          div(class="col-md-2")
-            +checkbox("subjectDay", "Lunes", "Lunes")
-            +checkbox("subjectDay", "Martes", "Martes")
-            +checkbox("subjectDay", "Miercoles", "Miércoles")
-            +checkbox("subjectDay", "Jueves", "Jueves")
-            +checkbox("subjectDay", "Viernes", "Viernes")
-          div(class="col-md-6 col-md-offset-2")
-            +input('fa  fa-clock-o fa-lg', "text", "Hora de inicio", "subjectStart", "", "dtclock1")
-            +input('fa  fa-clock-o fa-lg', "text", "Hora de término", "subjectEnd", "", "dtclock2")
-      +input('fa  fa-building-o fa-lg', "text", "Salón", "subjectClassroom")    
-      +button(btnClass, btnText)
+mixin subject-form(action, method, legend, btnClass, btnText, subject)
+  if (subject)
+    form(class="form-horizontal", action=action, method=method)
+      fieldset
+        legend 
+          div(class="col-md-offset-5") #{legend}
+        +input('fa  fa-book fa-lg', "text", "Nombre de la materia", "subjectName", subject.name, "")
+        +input('fa  fa-user-circle fa-lg', "text", "Nombre del maestro", "subjectTeacher", subject.teacher, "")
+        +select('fa fa-paint-brush fa-lg', "subjectColor", [{ name : "blue"}, { name : "green"}, { name : "pink"}, { name : "grey"}, { name : "yellow"}, { name : "orange"}, { name : "purple"}])
+        div(class="form-group")
+          label(class="col-md-2 control-label") 
+            span(class='fa fa-calendar-plus-o fa-lg')
+          div(class="col-md-10")
+            div(class="col-md-2")
+              +checkbox("subjectDay", "Lunes", "Lunes")
+              +checkbox("subjectDay", "Martes", "Martes")
+              +checkbox("subjectDay", "Miercoles", "Miércoles")
+              +checkbox("subjectDay", "Jueves", "Jueves")
+              +checkbox("subjectDay", "Viernes", "Viernes")
+            div(class="col-md-6 col-md-offset-2")
+              +input('fa  fa-clock-o fa-lg', "text", "Hora de inicio", "subjectStart", "", "dtclock1")
+              +input('fa  fa-clock-o fa-lg', "text", "Hora de término", "subjectEnd", "", "dtclock2")
+        +input('fa  fa-building-o fa-lg', "text", "Salón", "subjectClassroom", subject.classroom, "")    
+        +button(btnClass, btnText)
+  else
+    form(class="form-horizontal", action=action, method=method)
+      fieldset
+        legend 
+          div(class="col-md-offset-5") #{legend}
+        +input('fa  fa-book fa-lg', "text", "Nombre de la materia", "subjectName")
+        +input('fa  fa-user-circle fa-lg', "text", "Nombre del maestro", "subjectTeacher")
+        +select('fa fa-paint-brush fa-lg', "subjectColor", [{ name : "blue"}, { name : "green"}, { name : "pink"}, { name : "grey"}, { name : "yellow"}, { name : "orange"}, { name : "purple"}])
+        div(class="form-group")
+          label(class="col-md-2 control-label") 
+            span(class='fa fa-calendar-plus-o fa-lg')
+          div(class="col-md-10")
+            div(class="col-md-2")
+              +checkbox("subjectDay", "Lunes", "Lunes")
+              +checkbox("subjectDay", "Martes", "Martes")
+              +checkbox("subjectDay", "Miercoles", "Miércoles")
+              +checkbox("subjectDay", "Jueves", "Jueves")
+              +checkbox("subjectDay", "Viernes", "Viernes")
+            div(class="col-md-6 col-md-offset-2")
+              +input('fa  fa-clock-o fa-lg', "text", "Hora de inicio", "subjectStart", "", "dtclock1")
+              +input('fa  fa-clock-o fa-lg', "text", "Hora de término", "subjectEnd", "", "dtclock2")
+        +input('fa  fa-building-o fa-lg', "text", "Salón", "subjectClassroom")    
+        +button(btnClass, btnText)
