@@ -14,6 +14,19 @@ function newHomework(req, res, next) {
     });
 }
 
+function markHomeworkAsDone(req, res, next){
+    let find = {
+        _id: req.body.homeworkId,
+        owner: req.user._id
+    }
+    let replace = {
+        isDone: res.body.isDone,
+    };
+    Homework.findOneAndUpdate(find, replace, function(err, homework){
+        console.log("Marcado como done (o desmarcado)");
+    })
+}
+
 function saveHomework(req, res, next){
 
   // { description: 'jkjk', due: '28/11/2017', subject: 'Física' }
@@ -127,6 +140,8 @@ function findUserHomeworks(req, res, next){
         if(err){
             console.log("Error: " + err);
         }else{
+            console.log("Contenido de req.user:");
+            console.log(req.user);
             return res.render('homework/index', {homeworks: homeworks, user : req.user});
         }
     })
@@ -134,7 +149,28 @@ function findUserHomeworks(req, res, next){
 
 
 function modifyHomework(req, res, next){
+    //Find a record with given id
+    let find = {
+        _id: req.body.homeworkId,
+        owner: req.user._id
+    }
+    //Put any data the request have into an object
+    let replace = {
+        description: res.body.description,
+        isDone: res.body.isDone,
+        due: res.body.due,
+        subject: res.body.subject
+    };
+    Homework.findOneAndUpdate(find, replace, function (err, homework) {
+        console.log("Modificando tarea: ");
+        console.log(homework);
+    })
+
     res.render('layout_logged', {user : req.user});
+}
+
+function modifyHomeworkView(req, res, next){
+    res.render('homework/modify', {user : req.user});
 }
 
 
@@ -143,5 +179,7 @@ module.exports ={
   newHomework,
   findUserHomeworks,
   saveHomework,
-  modifyHomework
+  modifyHomework,
+  modifyHomeworkView,
+  markHomeworkAsDone
 };
