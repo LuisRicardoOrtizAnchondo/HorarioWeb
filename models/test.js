@@ -4,10 +4,10 @@ const ObjectId = mongoose.Schema.Types.ObjectId;
 const passportLocalMongoose = require('passport-local-mongoose');
 
 var Test = new Schema({
-    user: {type: ObjectId, ref: 'account'},
+    user: {type: ObjectId, ref: 'Account'},
     topics: [String],
     due: Date,
-    subject: {type: ObjectId, ref: 'subject'},
+    subject: {type: ObjectId, ref: 'Subject'},
 });
 
 Test.plugin(passportLocalMongoose);

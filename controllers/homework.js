@@ -53,7 +53,7 @@ function saveHomework(req, res, next){
     isDone: false,
     due: req.body.due,
     subject: req.body.subject,
-    owner: req.user
+    owner: req.user._id
   });
 
   console.log("########## dentro de save #################");

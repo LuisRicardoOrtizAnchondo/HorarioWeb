@@ -20,12 +20,16 @@ function saveSubject(req, res, next){
     teacher: req.body.subjectTeacher,
     color: req.body.subjectColor,
     schedule: mySchedule,
-    owner: req.user,
+    owner: req.user._id,
     classroom: req.body.subjectClassroom
   });
 
+  console.log("###### materia #########");
+  console.log(subject);
+
   subject.save( err => {
     if(err){
+      console.log(err);
       res.render('subjects/new', {message: "No se pudo guardar materia!", user : req.user});
     } else {
       res.render('subjects/new', {message: "Materia guardada con exito!", user : req.user});

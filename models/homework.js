@@ -8,7 +8,7 @@ var Homework = new Schema({
     isDone: Boolean,
     due: String, // formato de fecha -> dia/mes/año
     subject: String, //{type: ObjectId, ref: 'subject'},
-    owner: {type: ObjectId, ref: 'account', index: {unique: false}}
+    owner: {type: ObjectId, ref: 'Account'}
 });
 
 Homework.plugin(passportLocalMongoose);

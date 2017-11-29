@@ -8,7 +8,7 @@ var Subject = new Schema({
     teacher: String,
     color: String,
     schedule: [{day: String, start: String, end: String}],
-    owner: {type: ObjectId, ref: 'account'},
+    owner: {type: ObjectId, ref: 'Account'},
     classroom: String
 });
 
