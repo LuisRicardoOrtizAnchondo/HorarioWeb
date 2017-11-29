@@ -6,14 +6,14 @@ function show(req, res, next){
 
     let subjects = Subject.find({'owner' : req.user._id});
 
-    res.render('test/new', {subjects: subjects});
+    res.render('test/new', {subjects: subjects, user : req.user});
     Test.find({owner: req.user._id}).exec(function (err, test) {
       if (err) {
         res.render('/', { error: 'Ocurrio un error inesperado' })
       } else {
         res.render('test/show', { test })
       }
-})
+    })
 }
 
 function findTest(req, res, next){
@@ -40,14 +40,14 @@ function findTest(req, res, next){
         }else{
             console.log("Noticias");
             console.log(tests);
-            return res.render('test/index', {tests: tests});
+            return res.render('test/index', {tests: tests, user : req.user});
         }
     })
 }
 
 function newTest(req, res, next) {
     Subject.find({'owner' : req.user._id}).exec(function(err, subjects){
-        res.render('test/new', {subjects: subjects});
+        res.render('test/new', {subjects: subjects, user : req.user});
     });
 }
 
@@ -84,7 +84,7 @@ function saveTest(req, res, next){
                     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type,; Accept");
                     //return res.render('subject/newSubject', { subject, user : req.user });
                     //res.render('subject/newSubject', { user : req.user });
-                    return res.render('test/new', {message: "Test guardado con exito!", subjects: subjects});
+                    return res.render('test/new', {message: "Test guardado con exito!", subjects: subjects, user : req.user});
 
                 }
             });

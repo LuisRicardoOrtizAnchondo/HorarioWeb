@@ -7,7 +7,7 @@ function newSubject(req, res, next){
 
     let subjects = Subject.find({'owner' : req.user._id})
 
-    res.render('subjects/new', {subjects: subjects});
+    res.render('subjects/new', {subjects: subjects, user : req.user});
     // se debe hacer una consulta de todas las materias que existen para esa cuenta
 
 }
@@ -34,7 +34,7 @@ function findSubject(req, res, next){
         if(err){
             console.log("Error: " + err);
         }else{
-            return res.render('subjects/index', {subjects: subjects});
+            return res.render('subjects/index', {subjects: subjects, user : req.user});
         }
     })
 
@@ -77,7 +77,7 @@ function saveSubject(req, res, next){
             res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type,; Accept");
             //return res.render('subject/newSubject', { subject, user : req.user });
             //res.render('subject/newSubject', { user : req.user });
-            res.render('subjects/index', {message: "Materia guardada con exito!"});
+            res.render('subjects/index', {message: "Materia guardada con exito!", user : req.user});
             return
 
         }
@@ -88,7 +88,7 @@ function saveSubject(req, res, next){
 }
 
 function modifySubject(req, res, next){
-    res.render('subjects/new', {});
+    res.render('subjects/new', {user : req.user});
     //se cambiará esta ruta a /modify/[:id] y se rellenarán los campos del
     //form de la materia con los que ya se tienen registrados
 }

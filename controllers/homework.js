@@ -14,7 +14,7 @@ function newHomework(req, res, next) {
         }else{
             let subjects = subject;
             console.log(subjects);
-            return res.render('homework/new', {subjects: subjects});
+            return res.render('homework/new', {subjects: subjects, user : req.user});
         }
     })
 /*
@@ -37,7 +37,7 @@ function findUserHomeworks(req, res, next){
         if(err){
             console.log("Error: " + err);
         }else{
-            return res.render('homework/index', {homeworks: homeworks});
+            return res.render('homework/index', {homeworks: homeworks, user : req.user});
         }
     })
 }
@@ -79,7 +79,7 @@ function saveHomework(req, res, next){
                     res.header("Access-Control-Allow-Origin", "*");
                     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type,; Accept");
                     //return res.render('Homework/newHomework', { Homework, user : req.user });
-                    return res.render('homework/new', { subjects: subjects });
+                    return res.render('homework/new', {subjects: subjects , user : req.user});
 
                 }
             })
@@ -89,7 +89,7 @@ function saveHomework(req, res, next){
 }
 
 function modifyHomework(req, res, next){
-    res.render('layout_logged', {});
+    res.render('layout_logged', {user : req.user});
 }
 
 

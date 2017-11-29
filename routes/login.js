@@ -15,8 +15,4 @@ router.get('/error', loginController.error);
 
 router.get('/logout', loginController.logout);
 
-// router.get('/chat', function(req, res){
-// 	res.render('login/chat');
-// });
-
 module.exports = router;
