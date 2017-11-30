@@ -9,6 +9,6 @@ router.get('/', subjectController.findSubject);
 router.get('/new', subjectController.newSubject);
 router.post('/new', subjectController.saveSubject);
 router.get('/modify/:id', subjectController.modifySubjectView);
-router.post('/modify', subjectController.modifySubject);
+router.post('/modify/:id', subjectController.modifySubject);
 
 module.exports = router;

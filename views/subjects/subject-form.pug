@@ -8,7 +8,8 @@ mixin subject-form(action, method, legend, btnClass, btnText, subject)
     form(class="form-horizontal", action=action, method=method)
       fieldset
         legend 
-          div(class="col-md-offset-5") #{legend}
+          div(class="col-md-offset-5") 
+            | Modificar #{subject.name}
         +input('fa  fa-book fa-lg', "text", "Nombre de la materia", "subjectName", subject.name, "")
         +input('fa  fa-user-circle fa-lg', "text", "Nombre del maestro", "subjectTeacher", subject.teacher, "")
         +select('fa fa-paint-brush fa-lg', "subjectColor", [{ name : "blue"}, { name : "green"}, { name : "pink"}, { name : "grey"}, { name : "yellow"}, { name : "orange"}, { name : "purple"}])

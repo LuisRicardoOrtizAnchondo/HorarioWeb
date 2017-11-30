@@ -21,10 +21,13 @@ mixin tab(subjects)
             div(class="panel-body")
               - content = ""
               div(class="col-md-offset-11")
-                a(href='#' class='btn btn-primary btn-xs' data-toggle="modal" data-target=`#${subject.name}`)
-                  span(class='fa  fa-pencil-square-o fa-lg')
-                +modal_subject(subject.name, "#", "POST", subject)
-              h2(class="col-md-offset-5") #{subject.name}
+                //- a(href=`/subject/modify/${subject._id}` class='btn btn-primary btn-xs')
+                //-   span(class='fa  fa-pencil-square-o fa-lg')
+                //- a(href='#' class='btn btn-primary btn-xs' data-toggle="modal" data-target=`#${subject.name}`)
+                //-   span(class='fa  fa-pencil-square-o fa-lg')
+                +modal_subject(subject.name, `/subject/modify/${subject._id}`, "POST", subject)
+              h2(class="col-md-offset-5")
+                a(href='#' data-toggle="modal" data-target=`#${subject.name}`) #{subject.name}
               br
               h4(class="col-md-offset-4")= `Impartida por: ${subject.teacher}`
               h4(class="col-md-offset-4")= `Salón: ${subject.classroom}`
